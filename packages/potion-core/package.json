@@ -1,5 +1,5 @@
 {
-  "name": "math-helpers",
+  "name": "potion-core",
   "main": "src/index.ts",
   "types": "src/index.ts",
   "dependencies": {

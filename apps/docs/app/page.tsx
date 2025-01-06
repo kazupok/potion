@@ -1,3 +1,5 @@
+import { add } from "potion-core";
+
 export default function Page() {
-  return <h1 className="text-xl">Web</h1>;
+  return <h1 className="text-xl">{add(1, 2)}</h1>;
 }

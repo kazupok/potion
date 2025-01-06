@@ -26,6 +26,9 @@ importers:
       next:
         specifier: ^15.1.0
         version: 15.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      potion-core:
+        specifier: workspace:*
+        version: link:../../packages/potion-core
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -121,6 +124,12 @@ importers:
       typescript-eslint:
         specifier: ^8.15.0
         version: 8.15.0(eslint@9.15.0)(typescript@5.5.4)
+
+  packages/potion-core:
+    dependencies:
+      typescript:
+        specifier: latest
+        version: 5.7.2
 
   packages/typescript-config: {}
 
@@ -1971,6 +1980,11 @@ packages:
 
   typescript@5.5.4:
     resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+  typescript@5.7.2:
+    resolution: {integrity: sha512-i5t66RHxDvVN40HfDd1PsEThGNnlMCMT3jMUuoh9/0TaqWevNontacunWyN02LA9/fIbEWlcHZcgTKb9QoaLfg==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -4145,6 +4159,8 @@ snapshots:
       - supports-color
 
   typescript@5.5.4: {}
+
+  typescript@5.7.2: {}
 
   uglify-js@3.19.3:
     optional: true
