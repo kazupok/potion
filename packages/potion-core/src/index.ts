@@ -1,7 +1,3 @@
-export const add = (a: number, b: number) => {
-  return a + b;
-};
-
-export const subtract = (a: number, b: number) => {
-  return a - b;
-};
+export * from "./types/index.types";
+export * from "./common/index";
+export * from "./helpers/index";
