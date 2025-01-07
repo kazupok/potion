@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@repo/ui": "workspace:*",
-    "potion-core": "workspace:*",
     "next": "^15.1.0",
+    "potion-core": "^0.0.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
