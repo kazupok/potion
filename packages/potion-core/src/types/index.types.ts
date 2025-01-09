@@ -1,3 +1,3 @@
-export * from "./notion.types";
-export * from "./blocks.types";
-export * from "./database.types";
+export * as notion from "./notion.types";
+export * as blocks from "./blocks.types";
+export * as database from "./database.types";
