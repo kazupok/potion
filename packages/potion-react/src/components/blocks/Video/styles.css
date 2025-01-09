@@ -1,0 +1,9 @@
+.video-container {
+  width: 100%;
+  padding-bottom: 0.25rem;
+}
+
+.video-iframe {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}

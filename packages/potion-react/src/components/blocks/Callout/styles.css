@@ -1,0 +1,28 @@
+.callout {
+  margin: 0.4rem auto 0.25rem;
+  display: flex;
+  width: 100%;
+  border-radius: 0.25rem;
+  border: 1px solid transparent;
+  background-color: rgba(235, 236, 237, 0.6);
+  padding: 0.75rem;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.callout-icon {
+  margin: 0;
+  margin-right: 0.7rem;
+  line-height: 1.5;
+}
+
+.callout-icon img {
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.callout-content {
+  margin: 0;
+  line-height: 1.5;
+}

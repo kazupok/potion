@@ -1,2 +1,2 @@
-# tsup
-dist
+/node_modules
+/dist

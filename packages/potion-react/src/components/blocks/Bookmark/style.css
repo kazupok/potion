@@ -1,0 +1,8 @@
+.bookmark-block {
+  margin-bottom: 0.25rem;
+  padding-bottom: 0.25rem;
+  transition: all 0.2s ease-in-out;
+}
+.bookmark-block:hover {
+  opacity: 0.8;
+}
