@@ -1,4 +1,4 @@
-import type { ImageBlockObject } from "../types/blocks.types";
+import type { ImageBlockObject } from "../types/blocks-types";
 
 export const getImagePath = (block: ImageBlockObject) => {
   if (block.image.type === "external") {

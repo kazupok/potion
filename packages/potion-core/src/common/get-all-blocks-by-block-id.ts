@@ -1,5 +1,5 @@
 import type { Client } from "@notionhq/client";
-import type { BlockObject } from "../types/blocks.types";
+import type { BlockObject } from "../types/blocks-types";
 import { hasChildrenBlock, isColumnListBlock } from "./block-type-guard";
 
 export type GetAllBlocksByBlockIdProps = {

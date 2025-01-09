@@ -1,14 +1,39 @@
 {
   "name": "potion-core",
-  "version": "0.0.11",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "version": "0.0.26",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+    "./notion": {
+      "require": "./dist/notion/index.js",
+      "import": "./dist/notion/index.mjs",
+      "types": "./dist/notion/index.d.ts"
+    },
+    "./types": {
+      "require": "./dist/types/index.js",
+      "import": "./dist/types/index.mjs",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./helpers": {
+      "require": "./dist/helpers/index.js",
+      "import": "./dist/helpers/index.mjs",
+      "types": "./dist/helpers/index.d.ts"
+    },
+    "./common": {
+      "require": "./dist/common/index.js",
+      "import": "./dist/common/index.mjs",
+      "types": "./dist/common/index.d.ts"
+    },
+    "./utils": {
+      "require": "./dist/utils/index.js",
+      "import": "./dist/utils/index.mjs",
+      "types": "./dist/utils/index.d.ts"
     }
   },
+  "files": [
+    "dist/**"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "npm run build -- --watch",
@@ -20,7 +45,25 @@
     "typescript": "latest"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.11",
-    "tsup": "^8.3.5"
+    "@changesets/cli": "^2.27.11"
+  },
+  "typesVersions": {
+    "*": {
+      "helpers": [
+        "./dist/helpers/index.d.ts"
+      ],
+      "common": [
+        "./dist/common/index.d.ts"
+      ],
+      "utils": [
+        "./dist/utils/index.d.ts"
+      ],
+      "types": [
+        "./dist/types/index.d.ts"
+      ],
+      "notion": [
+        "./dist/notion/index.d.ts"
+      ]
+    }
   }
 }

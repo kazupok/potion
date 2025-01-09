@@ -2,7 +2,7 @@ import type {
   BlockObject,
   BlockObjectHasChild,
   ColumnListBlockObject,
-} from "../types/blocks.types";
+} from "../types/blocks-types";
 
 // 子を持てるブロックかどうかを判定する型ガード
 export function hasChildrenBlock(
