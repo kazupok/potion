@@ -123,7 +123,7 @@
         "useTemplate": "error"
       },
       "suspicious": {
-        "noArrayIndexKey": "error",
+        "noArrayIndexKey": "off",
         "noAssignInExpressions": "error",
         "noAsyncPromiseExecutor": "error",
         "noCatchAssign": "error",
