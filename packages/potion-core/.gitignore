@@ -1,4 +1,2 @@
-# tsup
-
-#turbo
-.turbo
+/node_modules
+/dist
