@@ -1,15 +1,16 @@
 {
   "name": "potion-core",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "main": "src/index.ts",
   "types": "src/index.ts",
   "scripts": {
     "build": "tsup src/index.ts --format cjs --dts",
     "dev": "npm run build -- --watch",
-    "publish-packages": "turbo run build lint && changeset version && changeset publish"
+    "publish-packages": "changeset version && changeset publish"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.15",
+    "node-html-parser": "^7.0.1",
     "typescript": "latest"
   },
   "devDependencies": {
