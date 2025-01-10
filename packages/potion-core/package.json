@@ -1,38 +1,11 @@
 {
   "name": "potion-core",
-  "version": "0.0.26",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "version": "0.0.34",
+  "main": "./dist",
   "types": "./dist/index.d.ts",
-  "exports": {
-    "./notion": {
-      "require": "./dist/notion/index.js",
-      "import": "./dist/notion/index.mjs",
-      "types": "./dist/notion/index.d.ts"
-    },
-    "./types": {
-      "require": "./dist/types/index.js",
-      "import": "./dist/types/index.mjs",
-      "types": "./dist/types/index.d.ts"
-    },
-    "./helpers": {
-      "require": "./dist/helpers/index.js",
-      "import": "./dist/helpers/index.mjs",
-      "types": "./dist/helpers/index.d.ts"
-    },
-    "./common": {
-      "require": "./dist/common/index.js",
-      "import": "./dist/common/index.mjs",
-      "types": "./dist/common/index.d.ts"
-    },
-    "./utils": {
-      "require": "./dist/utils/index.js",
-      "import": "./dist/utils/index.mjs",
-      "types": "./dist/utils/index.d.ts"
-    }
-  },
   "files": [
-    "dist/**"
+    "dist/**",
+    "dist/package.json"
   ],
   "scripts": {
     "build": "tsc",

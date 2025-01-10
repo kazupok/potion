@@ -1,11 +1,5 @@
 import { parse } from "node-html-parser";
-
-export type Metadata = {
-  title?: string;
-  description?: string;
-  image?: string;
-  url?: string;
-};
+import type { Metadata } from "../types";
 
 export const getMetadata = async (url: URL): Promise<Metadata | null> => {
   try {

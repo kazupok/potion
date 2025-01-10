@@ -1,5 +1,5 @@
-export * as common from "./common/index";
-export * as helpers from "./helpers/index";
-export * as utils from "./utils/index";
-export * as types from "./types/index";
-export * as notion from "./notion/index";
+export * from "./common/index";
+export * from "./helpers/index";
+export * from "./utils/index";
+export * from "./types/index";
+export * from "./notion/index";
