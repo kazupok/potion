@@ -1,9 +1,11 @@
 import type { Client } from "@notionhq/client";
+import type { Metadata } from "../types";
 import type { BlockObject, MentionPage } from "../types/blocks-types";
+import { getMetadata } from "../utils";
 import {
   hasChildrenBlock,
+  hasMetadataBlock,
   hasRichTextBlock,
-  isColumnListBlock,
 } from "./block-type-guard";
 import { getAllRichText } from "./get-all-rich-text";
 
@@ -12,7 +14,10 @@ export type GetAllBlocksByBlockIdProps = {
   blockId: string;
   level?: number;
   options?: {
+    disableGetMentionPage?: boolean;
+    disableGetMetadata?: boolean;
     getMentionPage?: (pageId: string) => Promise<MentionPage>;
+    getMetadata?: (url: URL) => Promise<Metadata | null>;
   };
 };
 
@@ -20,7 +25,12 @@ export const getAllBlocksByBlockId = async ({
   client,
   blockId,
   level = 1,
-  options = {},
+  options = {
+    disableGetMetadata: false,
+    disableGetMentionPage: false,
+    getMentionPage: undefined,
+    getMetadata,
+  },
 }: GetAllBlocksByBlockIdProps): Promise<BlockObject[]> => {
   const res = await client.blocks.children.list({
     block_id: blockId,
@@ -52,7 +62,7 @@ export const getAllBlocksByBlockId = async ({
       } as BlockObject;
     }
 
-    if (isColumnListBlock(block)) {
+    if (block.type === "column_list") {
       const columnListBlocks = await getAllBlocksByBlockId({
         client,
         blockId: block.id,
@@ -66,7 +76,11 @@ export const getAllBlocksByBlockId = async ({
       } as BlockObject;
     }
 
-    if (hasRichTextBlock(block) && options.getMentionPage) {
+    if (
+      !options.disableGetMentionPage &&
+      options.getMentionPage &&
+      hasRichTextBlock(block)
+    ) {
       if (block.type === "paragraph") {
         block.paragraph = {
           ...block.paragraph,
@@ -173,6 +187,47 @@ export const getAllBlocksByBlockId = async ({
             richText: block.code.rich_text,
             getMentionPage: options.getMentionPage,
           }),
+        };
+      }
+    }
+
+    if (
+      !options.disableGetMentionPage &&
+      options.getMentionPage &&
+      block.type === "link_to_page"
+    ) {
+      const pageId =
+        block.link_to_page.type === "page_id"
+          ? block.link_to_page.page_id
+          : undefined;
+      const page = pageId ? { Page: await options.getMentionPage(pageId) } : {};
+
+      block = {
+        ...block,
+        ...page,
+      };
+    }
+
+    if (
+      !options.disableGetMetadata &&
+      options.getMetadata &&
+      hasMetadataBlock(block)
+    ) {
+      let url: URL | null = null;
+
+      if (block.type === "bookmark") {
+        url = new URL(block.bookmark.url);
+      }
+
+      if (block.type === "embed") {
+        url = new URL(block.embed.url);
+      }
+
+      if (url) {
+        const metadata = await getMetadata(url);
+        block = {
+          ...block,
+          Metadata: { ...metadata },
         };
       }
     }

@@ -36,6 +36,7 @@ import type {
   UnsupportedBlockObjectResponse,
   VideoBlockObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
+import type { Metadata } from "./common-types";
 
 export type MentionPage =
   | {
@@ -114,6 +115,8 @@ export type BlockObjectHasRichText =
   | TemplateBlockObject
   | CalloutBlockObject
   | CodeBlockObject;
+
+export type BlockObjectHasMetadata = BookmarkBlockObject | EmbedBlockObject;
 
 /**
  * Childrenを持つブロックの型を定義
@@ -371,7 +374,9 @@ export type ColumnListBlockObject = ColumnListBlockObjectResponse & {
 // ページリンク
 export type LinkToPageType = LinkToPageBlockObjectResponse["link_to_page"];
 export type LinkToPageBlockObject = LinkToPageBlockObjectResponse &
-  BaseBlockObject;
+  BaseBlockObject & {
+    Page: MentionPage;
+  };
 
 // テーブル行
 export type TableRowType = TableRowBlockObjectResponse["table_row"];
@@ -379,11 +384,15 @@ export type TableRowBlockObject = TableRowBlockObjectResponse & BaseBlockObject;
 
 // 埋め込み
 export type EmbedType = EmbedBlockObjectResponse["embed"];
-export type EmbedBlockObject = EmbedBlockObjectResponse & BaseBlockObject;
+export type EmbedBlockObject = EmbedBlockObjectResponse & {
+  Metadata?: Metadata;
+} & BaseBlockObject;
 
 // ブックマーク
 export type BookmarkType = BookmarkBlockObjectResponse["bookmark"];
-export type BookmarkBlockObject = BookmarkBlockObjectResponse & BaseBlockObject;
+export type BookmarkBlockObject = BookmarkBlockObjectResponse & {
+  Metadata?: Metadata;
+} & BaseBlockObject;
 
 // 画像
 export type ImageType = ImageBlockObjectResponse["image"];

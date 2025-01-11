@@ -1,8 +1,8 @@
 import type {
   BlockObject,
   BlockObjectHasChild,
+  BlockObjectHasMetadata,
   BlockObjectHasRichText,
-  ColumnListBlockObject,
 } from "../types/blocks-types";
 
 // 子を持てるブロックかどうかを判定する型ガード
@@ -34,13 +34,6 @@ export function hasChildrenBlock(
   }
 }
 
-// カラムリストブロックかどうかを判定する型ガード
-export function isColumnListBlock(
-  block: BlockObject,
-): block is ColumnListBlockObject {
-  return block.type === "column_list";
-}
-
 // メンションを持てるブロックかどうかを判定する型ガード
 export function hasRichTextBlock(
   block: BlockObject,
@@ -58,6 +51,20 @@ export function hasRichTextBlock(
     case "callout":
     case "template":
     case "code": {
+      return true;
+    }
+    default: {
+      return false;
+    }
+  }
+}
+
+export function hasMetadataBlock(
+  block: BlockObject,
+): block is BlockObjectHasMetadata {
+  switch (block.type) {
+    case "bookmark":
+    case "embed": {
       return true;
     }
     default: {

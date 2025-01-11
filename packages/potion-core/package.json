@@ -1,6 +1,6 @@
 {
   "name": "potion-core",
-  "version": "0.0.34",
+  "version": "0.0.36",
   "main": "./dist",
   "types": "./dist/index.d.ts",
   "files": [
