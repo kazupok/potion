@@ -3,7 +3,7 @@ import type { MentionPage } from "../types/blocks-types";
 
 export type GetAllRichTextProps = {
   richText: RichTextItemResponse[];
-  getMentionPage: (pageId: string) => Promise<MentionPage>;
+  getMentionPage: (pageId: string) => Promise<MentionPage | null>;
 };
 
 export const getAllRichText = async ({

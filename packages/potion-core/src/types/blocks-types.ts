@@ -51,7 +51,7 @@ export type MentionPage =
 
 export type MentionRichTextItem = MentionRichTextItemResponse & {
   Mention?: {
-    Page?: MentionPage;
+    Page?: MentionPage | null;
   };
 };
 
@@ -375,7 +375,7 @@ export type ColumnListBlockObject = ColumnListBlockObjectResponse & {
 export type LinkToPageType = LinkToPageBlockObjectResponse["link_to_page"];
 export type LinkToPageBlockObject = LinkToPageBlockObjectResponse &
   BaseBlockObject & {
-    Page: MentionPage;
+    Page: MentionPage | null;
   };
 
 // テーブル行
@@ -385,13 +385,13 @@ export type TableRowBlockObject = TableRowBlockObjectResponse & BaseBlockObject;
 // 埋め込み
 export type EmbedType = EmbedBlockObjectResponse["embed"];
 export type EmbedBlockObject = EmbedBlockObjectResponse & {
-  Metadata?: Metadata;
+  Metadata?: Metadata | null;
 } & BaseBlockObject;
 
 // ブックマーク
 export type BookmarkType = BookmarkBlockObjectResponse["bookmark"];
 export type BookmarkBlockObject = BookmarkBlockObjectResponse & {
-  Metadata?: Metadata;
+  Metadata?: Metadata | null;
 } & BaseBlockObject;
 
 // 画像

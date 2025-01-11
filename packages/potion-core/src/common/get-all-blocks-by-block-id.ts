@@ -9,6 +9,13 @@ import {
 } from "./block-type-guard";
 import { getAllRichText } from "./get-all-rich-text";
 
+const defaultOptions = {
+  disableGetMentionPage: false,
+  disableGetMetadata: false,
+  getMentionPage: undefined,
+  getMetadata,
+};
+
 export type GetAllBlocksByBlockIdProps = {
   client: Client;
   blockId: string;
@@ -16,7 +23,7 @@ export type GetAllBlocksByBlockIdProps = {
   options?: {
     disableGetMentionPage?: boolean;
     disableGetMetadata?: boolean;
-    getMentionPage?: (pageId: string) => Promise<MentionPage>;
+    getMentionPage?: (pageId: string) => Promise<MentionPage | null>;
     getMetadata?: (url: URL) => Promise<Metadata | null>;
   };
 };
@@ -25,13 +32,13 @@ export const getAllBlocksByBlockId = async ({
   client,
   blockId,
   level = 1,
-  options = {
-    disableGetMetadata: false,
-    disableGetMentionPage: false,
-    getMentionPage: undefined,
-    getMetadata,
-  },
+  options: _options,
 }: GetAllBlocksByBlockIdProps): Promise<BlockObject[]> => {
+  const options = {
+    ...defaultOptions,
+    ..._options,
+  };
+
   const res = await client.blocks.children.list({
     block_id: blockId,
   });
@@ -205,7 +212,7 @@ export const getAllBlocksByBlockId = async ({
       block = {
         ...block,
         ...page,
-      };
+      } as BlockObject;
     }
 
     if (
@@ -224,7 +231,7 @@ export const getAllBlocksByBlockId = async ({
       }
 
       if (url) {
-        const metadata = await getMetadata(url);
+        const metadata = await options.getMetadata(url);
         block = {
           ...block,
           Metadata: { ...metadata },
