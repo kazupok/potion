@@ -6,7 +6,6 @@ import type {
   Heading1BlockObject,
   Heading2BlockObject,
   Heading3BlockObject,
-  NonToggleableHeading1,
   ToggleableHeading1,
   ToggleableHeading2,
   ToggleableHeading3,
@@ -27,25 +26,17 @@ export function isToggleableHeading(
   return false;
 }
 
-export function isNonToggleableHeading1(
-  block: Heading1BlockObject,
-): block is NonToggleableHeading1 {
-  return block.heading_1.is_toggleable === false;
-}
-
-export function isToggleableHeading2(
-  block: Heading2BlockObject,
-): block is ToggleableHeading2 {
-  return block.heading_2.is_toggleable === true;
-}
 // 子を持てるブロックかどうかを判定する型ガード
 export function hasChildrenBlock(
   block: BlockObject,
 ): block is BlockObjectHasChild {
   switch (block.type) {
     case "heading_1":
+      return isToggleableHeading(block);
     case "heading_2":
+      return isToggleableHeading(block);
     case "heading_3":
+      return isToggleableHeading(block);
     case "paragraph":
     case "quote":
     case "to_do":
