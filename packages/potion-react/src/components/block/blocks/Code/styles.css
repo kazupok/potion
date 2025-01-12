@@ -1,0 +1,11 @@
+.ptn-blk-blocks-code {
+  margin-bottom: 0.625rem;
+  display: block;
+  width: 100%;
+  padding-bottom: 0.25rem;
+}
+
+.ptn-blk-blocks-code-container {
+  border-radius: 0.25rem;
+  background-color: rgb(247, 246, 243);
+}

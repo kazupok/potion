@@ -20,6 +20,7 @@ import type {
   ImageBlockObject,
   LinkPreviewBlockObject,
   LinkToPageBlockObject,
+  MentionPage,
   NumberedListItemBlockObject,
   ParagraphBlockObject,
   PdfBlockObject,
@@ -33,87 +34,160 @@ import type {
   ToggleBlockObject,
   UnsupportedBlockObject,
   VideoBlockObject,
-} from "potion-core/types";
+} from "potion-core";
 import type React from "react";
 
-export type BaseBlockProps<T extends BlockObject> = {
-  block: T & { Children?: BlockObject[] };
+export type BlockProps<T extends BlockObject> = {
+  blockObject: T;
   blockComponentMap: BlockComponentMap;
 };
 
-export type ComponentType<T extends BlockObject> = React.ComponentType<
-  BaseBlockProps<T>
->;
+export type ComponentType<T extends BlockObject> = React.FC<BlockProps<T>>;
+
+// export type ServerComponentType<T extends BlockObject> = (
+//   props: BlockProps<T>,
+// ) => Promise<any>;
 
 export type BlockComponentMap = {
-  [K in BlockObject["type"]]?: ComponentType<Extract<BlockObject, { type: K }>>;
+  blocks: {
+    paragraph?: React.FC<ParagraphBlockProps>;
+    heading_1?: React.FC<Heading1BlockProps>;
+    heading_2?: React.FC<Heading2BlockProps>;
+    heading_3?: React.FC<Heading3BlockProps>;
+    quote?: React.FC<QuoteBlockProps>;
+    code?: React.FC<CodeBlockProps>;
+    toggle?: React.FC<ToggleBlockProps>;
+    to_do?: React.FC<ToDoBlockProps>;
+    bulleted_list_item?: React.FC<BulletedListItemBlockProps>;
+    numbered_list_item?: React.FC<NumberedListItemBlockProps>;
+    image?: React.FC<ImageBlockProps>;
+    video?: React.FC<VideoBlockProps>;
+    bookmark?: React.FC<BookmarkBlockProps>;
+    embed?: React.FC<EmbedBlockProps>;
+    link_to_page?: React.FC<LinkToPageBlockProps>;
+    link_preview?: React.FC<LinkPreviewBlockProps>;
+    callout?: React.FC<CalloutBlockProps>;
+    divider?: React.FC<DividerBlockProps>;
+    column_list?: React.FC<ColumnListBlockProps>;
+    column?: React.FC<ColumnBlockProps>;
+    table?: React.FC<TableBlockProps>;
+    template?: React.FC<TemplateBlockProps>;
+    synced_block?: React.FC<SyncedBlockBlockProps>;
+    table_of_contents?: React.FC<TableOfContentsBlockProps>;
+    table_row?: React.FC<TableRowBlockProps>;
+  };
 };
 
-export type Heading1BlockProps = ComponentType<Heading1BlockObject>;
+/**
+ * BlockProps
+ */
+export type Heading1BlockProps = BlockProps<Heading1BlockObject>;
 
-export type Heading2BlockProps = ComponentType<Heading2BlockObject>;
+export type Heading2BlockProps = BlockProps<Heading2BlockObject>;
 
-export type Heading3BlockProps = ComponentType<Heading3BlockObject>;
+export type Heading3BlockProps = BlockProps<Heading3BlockObject>;
 
-export type ParagraphBlockProps = ComponentType<ParagraphBlockObject>;
+export type ParagraphBlockProps = BlockProps<ParagraphBlockObject>;
 
-export type QuoteBlockProps = ComponentType<QuoteBlockObject>;
+export type QuoteBlockProps = BlockProps<QuoteBlockObject>;
 
 export type BulletedListItemBlockProps =
-  ComponentType<BulletedListItemBlockObject>;
+  BlockProps<BulletedListItemBlockObject>;
 
-export type CalloutBlockProps = ComponentType<CalloutBlockObject>;
+export type CalloutBlockProps = BlockProps<CalloutBlockObject>;
 
-export type ChildDatabaseBlockProps = ComponentType<ChildDatabaseBlockObject>;
+export type ChildDatabaseBlockProps = BlockProps<ChildDatabaseBlockObject>;
 
-export type ChildPageBlockProps = ComponentType<ChildPageBlockObject>;
+export type ChildPageBlockProps = BlockProps<ChildPageBlockObject>;
 
-export type ColumnBlockProps = ComponentType<ColumnBlockObject>;
+export type ColumnBlockProps = BlockProps<ColumnBlockObject>;
 
 export type NumberedListItemBlockProps =
-  ComponentType<NumberedListItemBlockObject>;
+  BlockProps<NumberedListItemBlockObject>;
 
-export type SyncedBlockBlockProps = ComponentType<SyncedBlockBlockObject>;
+export type SyncedBlockBlockProps = BlockProps<SyncedBlockBlockObject>;
 
-export type TableBlockProps = ComponentType<TableBlockObject>;
+export type TableBlockProps = BlockProps<TableBlockObject>;
 
-export type TemplateBlockProps = ComponentType<TemplateBlockObject>;
+export type TemplateBlockProps = BlockProps<TemplateBlockObject>;
 
-export type ToDoBlockProps = ComponentType<ToDoBlockObject>;
+export type ToDoBlockProps = BlockProps<ToDoBlockObject>;
 
-export type ToggleBlockProps = ComponentType<ToggleBlockObject>;
+export type ToggleBlockProps = BlockProps<ToggleBlockObject>;
 
-export type EquationBlockProps = ComponentType<EquationBlockObject>;
+export type EquationBlockProps = BlockProps<EquationBlockObject>;
 
-export type CodeBlockProps = ComponentType<CodeBlockObject>;
+export type CodeBlockProps = BlockProps<CodeBlockObject>;
 
-export type DividerBlockProps = ComponentType<DividerBlockObject>;
+export type DividerBlockProps = BlockProps<DividerBlockObject>;
 
-export type BreadcrumbBlockProps = ComponentType<BreadcrumbBlockObject>;
+export type BreadcrumbBlockProps = BlockProps<BreadcrumbBlockObject>;
 
-export type TableOfContentsBlockProps =
-  ComponentType<TableOfContentsBlockObject>;
+export type TableOfContentsBlockProps = BlockProps<TableOfContentsBlockObject>;
 
-export type ColumnListBlockProps = ComponentType<ColumnListBlockObject>;
+export type ColumnListBlockProps = BlockProps<ColumnListBlockObject>;
 
-export type LinkToPageBlockProps = ComponentType<LinkToPageBlockObject>;
+export type LinkToPageBlockProps = BlockProps<LinkToPageBlockObject>;
 
-export type TableRowBlockProps = ComponentType<TableRowBlockObject>;
+export type TableRowBlockProps = BlockProps<TableRowBlockObject>;
 
-export type EmbedBlockProps = ComponentType<EmbedBlockObject>;
+export type EmbedBlockProps = BlockProps<EmbedBlockObject>;
 
-export type BookmarkBlockProps = ComponentType<BookmarkBlockObject>;
+export type BookmarkBlockProps = BlockProps<BookmarkBlockObject>;
 
-export type ImageBlockProps = ComponentType<ImageBlockObject>;
+export type ImageBlockProps = BlockProps<ImageBlockObject>;
 
-export type VideoBlockProps = ComponentType<VideoBlockObject>;
+export type VideoBlockProps = BlockProps<VideoBlockObject>;
 
-export type PdfBlockProps = ComponentType<PdfBlockObject>;
+export type PdfBlockProps = BlockProps<PdfBlockObject>;
 
-export type FileBlockProps = ComponentType<FileBlockObject>;
+export type FileBlockProps = BlockProps<FileBlockObject>;
 
-export type AudioBlockProps = ComponentType<AudioBlockObject>;
+export type AudioBlockProps = BlockProps<AudioBlockObject>;
 
-export type LinkPreviewBlockProps = ComponentType<LinkPreviewBlockObject>;
+export type LinkPreviewBlockProps = BlockProps<LinkPreviewBlockObject>;
 
-export type UnsupportedBlockProps = ComponentType<UnsupportedBlockObject>;
+export type UnsupportedBlockProps = BlockProps<UnsupportedBlockObject>;
+
+export type AllBlockProps =
+  | Heading1BlockProps
+  | Heading2BlockProps
+  | Heading3BlockProps
+  | ParagraphBlockProps
+  | QuoteBlockProps
+  | BulletedListItemBlockProps
+  | CalloutBlockProps
+  | ChildDatabaseBlockProps
+  | ChildPageBlockProps
+  | ColumnBlockProps
+  | NumberedListItemBlockProps
+  | SyncedBlockBlockProps
+  | TableBlockProps
+  | TemplateBlockProps
+  | ToDoBlockProps
+  | ToggleBlockProps
+  | EquationBlockProps
+  | CodeBlockProps
+  | DividerBlockProps
+  | BreadcrumbBlockProps
+  | TableOfContentsBlockProps
+  | ColumnListBlockProps
+  | LinkToPageBlockProps
+  | TableRowBlockProps
+  | EmbedBlockProps
+  | BookmarkBlockProps
+  | ImageBlockProps
+  | VideoBlockProps
+  | PdfBlockProps
+  | FileBlockProps
+  | AudioBlockProps
+  | LinkPreviewBlockProps
+  | UnsupportedBlockProps;
+
+/**
+ * annotation types
+ */
+export type MentionProps = {
+  pageId: string;
+  page: MentionPage;
+};

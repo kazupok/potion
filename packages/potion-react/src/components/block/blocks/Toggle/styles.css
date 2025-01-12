@@ -1,0 +1,17 @@
+.ptn-blk-blocks-toggle {
+  padding-bottom: 0.25rem;
+}
+
+.ptn-blk-blocks-toggle-summary {
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.ptn-blk-blocks-toggle-summary:hover {
+  opacity: 0.8;
+}
+
+.ptn-blk-blocks-toggle-content {
+  padding-top: 0.25rem;
+  padding-left: 14px;
+}

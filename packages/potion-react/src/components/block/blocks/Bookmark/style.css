@@ -1,0 +1,8 @@
+.ptn-blk-blocks-bookmark {
+  margin-bottom: 0.25rem;
+  padding-bottom: 0.25rem;
+  transition: all 0.2s ease-in-out;
+}
+.ptn-blk-blocks-bookmark:hover {
+  opacity: 0.8;
+}

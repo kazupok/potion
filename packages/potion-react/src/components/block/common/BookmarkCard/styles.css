@@ -1,0 +1,92 @@
+.ptn-blk-embed-bookmark {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  font-size: 0.9rem;
+}
+
+.ptn-blk-embed-bookmark-link {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 3px;
+  border: 1px solid rgba(55, 53, 47, 0.16);
+  text-decoration: none;
+  user-select: none;
+}
+
+.ptn-blk-embed-bookmark-content {
+  flex: 4 1 180px;
+  overflow: hidden;
+  padding: 0.75rem;
+  text-align: left;
+  color: var(--fg);
+}
+
+.ptn-blk-embed-bookmark-title {
+  margin-bottom: 0.125rem;
+  min-height: 1.5rem;
+  width: 120px;
+  min-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+}
+
+.ptn-blk-embed-bookmark-description {
+  height: 2rem;
+  overflow: hidden;
+  font-size: 0.65rem;
+  line-height: 1rem;
+  opacity: 0.5;
+}
+
+.ptn-blk-embed-bookmark-meta {
+  margin-top: 0.375rem;
+  display: flex;
+  align-items: center;
+}
+
+.ptn-blk-embed-bookmark-favicon {
+  margin-right: 0.375rem;
+  height: 0.75rem;
+  width: 0.75rem;
+  min-width: 0.75rem;
+}
+
+.ptn-blk-embed-bookmark-favicon-img {
+  max-width: 100%;
+}
+
+.ptn-blk-embed-bookmark-url {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--fg);
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.ptn-blk-embed-bookmark-image {
+  position: relative;
+  display: none;
+  flex: 1 1 180px;
+}
+
+@media (min-width: 768px) {
+  .ptn-blk-embed-bookmark-image {
+    display: block;
+  }
+}
+
+.ptn-blk-embed-bookmark-img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}

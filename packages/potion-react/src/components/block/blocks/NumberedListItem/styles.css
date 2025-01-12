@@ -1,0 +1,21 @@
+.ptn-blk-blocks-numbered {
+  list-style-type: decimal;
+  font-size: 1rem;
+}
+
+.ptn-blk-blocks-numbered--alpha {
+  list-style-type: lower-alpha;
+}
+
+.ptn-blk-blocks-numbered--roman {
+  list-style-type: lower-roman;
+}
+
+.ptn-blk-blocks-numbered-item {
+  list-style-position: inside;
+  padding-bottom: 0.25rem;
+}
+
+.ptn-blk-blocks-numbered-nested {
+  padding-left: 1.25rem;
+}

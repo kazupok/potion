@@ -1,0 +1,22 @@
+.ptn-blk-blocks-bulleted {
+  list-style-type: disc;
+  font-size: 1rem; /* text-base */
+}
+
+.ptn-blk-blocks-bulleted--circle {
+  list-style-type: circle;
+}
+
+.ptn-blk-blocks-bulleted--square {
+  list-style-type: square;
+}
+
+.ptn-blk-blocks-bulleted-item {
+  list-style-position: inside;
+  padding-bottom: 0.25rem; /* pb-1 */
+}
+
+.ptn-blk-blocks-bulleted-nested {
+  padding-left: 1.25rem; /* pl-5 */
+  font-size: 1rem; /* text-base */
+}

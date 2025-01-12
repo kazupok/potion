@@ -1,10 +1,11 @@
 import type { RichTextItemResponse } from "potion-core/notion";
+import React from "react";
 import type { FC, PropsWithChildren } from "react";
-import './styles.css';
+import "./styles.css";
 
-interface StrikethroughProps extends PropsWithChildren {
+export type StrikethroughProps = PropsWithChildren & {
   richText: RichTextItemResponse;
-}
+};
 
 export const Strikethrough: FC<StrikethroughProps> = ({
   richText,

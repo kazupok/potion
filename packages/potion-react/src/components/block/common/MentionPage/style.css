@@ -1,0 +1,22 @@
+.ptn-blk-mention-error-icon {
+  margin-right: 0.25rem;
+}
+
+.ptn-blk-mention-error-text {
+  text-decoration: underline;
+}
+
+.ptn-blk-mention-link {
+  text-decoration: underline;
+}
+
+.ptn-blk-mention-icon {
+  margin-right: 0.25rem;
+}
+
+.ptn-blk-mention-image {
+  margin-right: 0.25rem;
+  display: inline-block;
+  height: 1.25rem;
+  width: 1.25rem;
+}

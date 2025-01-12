@@ -1,0 +1,11 @@
+.ptn-blk-annotations-richtext {
+  display: inline;
+}
+
+.ptn-blk-annotations-richtext-equation {
+  display: inline;
+}
+
+.ptn-blk-annotations-richtext-line-break {
+  display: block;
+}

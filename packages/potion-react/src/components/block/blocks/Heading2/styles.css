@@ -1,0 +1,25 @@
+.ptn-blk-blocks-heading2 {
+  font-weight: bold;
+  font-size: 1.5rem; /* text-2xl */
+}
+
+.ptn-blk-blocks-heading2-container {
+  padding-bottom: 0.75rem;
+}
+
+.ptn-blk-blocks-heading-toggle {
+  cursor: pointer;
+}
+
+.ptn-blk-blocks-heading-toggle:hover {
+  opacity: 0.8;
+}
+
+.ptn-blk-blocks-heading-toggle-content {
+  padding-top: 0.25rem;
+  padding-left: 1.25rem;
+}
+
+.ptn-blk-blocks-heading-link {
+  display: inline-block;
+}
