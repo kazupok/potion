@@ -3,8 +3,41 @@ import type {
   BlockObjectHasChild,
   BlockObjectHasMetadata,
   BlockObjectHasRichText,
+  Heading1BlockObject,
+  Heading2BlockObject,
+  Heading3BlockObject,
+  NonToggleableHeading1,
+  ToggleableHeading1,
+  ToggleableHeading2,
+  ToggleableHeading3,
 } from "../types/blocks-types";
 
+export function isToggleableHeading(
+  block: Heading1BlockObject | Heading2BlockObject | Heading3BlockObject,
+): block is ToggleableHeading1 | ToggleableHeading2 | ToggleableHeading3 {
+  if (block.type === "heading_1") {
+    return block.heading_1.is_toggleable === true;
+  }
+  if (block.type === "heading_2") {
+    return block.heading_2.is_toggleable === true;
+  }
+  if (block.type === "heading_3") {
+    return block.heading_3.is_toggleable === true;
+  }
+  return false;
+}
+
+export function isNonToggleableHeading1(
+  block: Heading1BlockObject,
+): block is NonToggleableHeading1 {
+  return block.heading_1.is_toggleable === false;
+}
+
+export function isToggleableHeading2(
+  block: Heading2BlockObject,
+): block is ToggleableHeading2 {
+  return block.heading_2.is_toggleable === true;
+}
 // 子を持てるブロックかどうかを判定する型ガード
 export function hasChildrenBlock(
   block: BlockObject,

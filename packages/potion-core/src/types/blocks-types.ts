@@ -136,8 +136,15 @@ type ObjectTypeHasRichText =
   | CalloutType
   | CodeType;
 
-type ObjectType<T extends ObjectTypeHasRichText> = Omit<T, "rich_text"> & {
+type ReplaceRichText<T extends ObjectTypeHasRichText> = Omit<T, "rich_text"> & {
   rich_text: RichTextItem[];
+};
+
+type ReplaceToggleable<
+  T extends Heading1Type | Heading2Type | Heading3Type,
+  K extends boolean,
+> = Omit<T, "is_toggleable"> & {
+  is_toggleable: K;
 };
 
 // 段落
@@ -146,104 +153,53 @@ export type ParagraphBlockObject = Omit<
   ParagraphBlockObjectResponse,
   "paragraph"
 > & {
-  paragraph: ObjectType<ParagraphType>;
+  paragraph: ReplaceRichText<ParagraphType>;
   Children?: BlockObject[];
 } & BaseBlockObject;
 
 // 見出し1
 type Heading1Type = Heading1BlockObjectResponse["heading_1"];
-type Heading1IsToggleable = Omit<
-  Heading1Type,
-  "is_toggleable" | "rich_text"
-> & {
-  is_toggleable: true;
-  rich_text: RichTextItem[];
-};
-type Heading1IsNotToggleable = Omit<
-  Heading1Type,
-  "is_toggleable" | "rich_text"
-> & {
-  is_toggleable: false;
-  rich_text: RichTextItem[];
-};
-export type Heading1BlockObject = Omit<
-  Heading1BlockObjectResponse,
-  "heading_1"
-> &
-  (
-    | {
-        heading_1: Heading1IsToggleable;
-        Children?: BlockObject[];
-      }
-    | {
-        heading_1: Heading1IsNotToggleable;
-      }
-  ) &
+export type ToggleableHeading1 = {
+  heading_1: ReplaceRichText<ReplaceToggleable<Heading1Type, true>>;
+  Children?: BlockObject[];
+} & Omit<Heading1BlockObjectResponse, "heading_1"> &
   BaseBlockObject;
+export type NonToggleableHeading1 = {
+  heading_1: ReplaceRichText<ReplaceToggleable<Heading1Type, false>>;
+} & Omit<Heading1BlockObjectResponse, "heading_1"> &
+  BaseBlockObject;
+
+export type Heading1BlockObject = ToggleableHeading1 | NonToggleableHeading1;
 
 // 見出し2
 type Heading2Type = Heading2BlockObjectResponse["heading_2"];
-type Heading2IsToggleable = Omit<
-  Heading2Type,
-  "is_toggleable" | "rich_text"
-> & {
-  is_toggleable: true;
-  rich_text: RichTextItem[];
-};
-type Heading2IsNotToggleable = Omit<
-  Heading2Type,
-  "is_toggleable" | "rich_text"
-> & {
-  is_toggleable: false;
-  rich_text: RichTextItem[];
-};
-
-export type Heading2BlockObject = Omit<
-  Heading2BlockObjectResponse,
-  "heading_2"
-> &
-  (
-    | {
-        heading_2: Heading2IsToggleable;
-        Children?: BlockObject[];
-      }
-    | {
-        heading_2: Heading2IsNotToggleable;
-      }
-  ) &
+export type ToggleableHeading2 = {
+  heading_2: ReplaceRichText<ReplaceToggleable<Heading2Type, true>>;
+  Children?: BlockObject[];
+} & Omit<Heading2BlockObjectResponse, "heading_2"> &
   BaseBlockObject;
+
+export type NonToggleableHeading2 = {
+  heading_2: ReplaceRichText<ReplaceToggleable<Heading2Type, false>>;
+} & Omit<Heading2BlockObjectResponse, "heading_2"> &
+  BaseBlockObject;
+
+export type Heading2BlockObject = ToggleableHeading2 | NonToggleableHeading2;
 
 // 見出し3
 type Heading3Type = Heading3BlockObjectResponse["heading_3"];
-type Heading3IsToggleable = Omit<
-  Heading3Type,
-  "is_toggleable" | "rich_text"
-> & {
-  is_toggleable: true;
-  rich_text: RichTextItem[];
-};
-type Heading3IsNotToggleable = Omit<
-  Heading3Type,
-  "is_toggleable" | "rich_text"
-> & {
-  is_toggleable: false;
-  rich_text: RichTextItem[];
-};
-
-export type Heading3BlockObject = Omit<
-  Heading3BlockObjectResponse,
-  "heading_3"
-> &
-  (
-    | {
-        heading_3: Heading3IsToggleable;
-        Children?: BlockObject[];
-      }
-    | {
-        heading_3: Heading3IsNotToggleable;
-      }
-  ) &
+export type ToggleableHeading3 = {
+  heading_3: ReplaceRichText<ReplaceToggleable<Heading3Type, true>>;
+  Children?: BlockObject[];
+} & Omit<Heading3BlockObjectResponse, "heading_3"> &
   BaseBlockObject;
+
+export type NonToggleableHeading3 = {
+  heading_3: ReplaceRichText<ReplaceToggleable<Heading3Type, false>>;
+} & Omit<Heading3BlockObjectResponse, "heading_3"> &
+  BaseBlockObject;
+
+export type Heading3BlockObject = ToggleableHeading3 | NonToggleableHeading3;
 
 // 箇条書きリストアイテム
 export type BulletedListItemType =
@@ -252,7 +208,7 @@ export type BulletedListItemBlockObject = Omit<
   BulletedListItemBlockObjectResponse,
   "bulleted_list_item"
 > & {
-  bulleted_list_item: ObjectType<BulletedListItemType>;
+  bulleted_list_item: ReplaceRichText<BulletedListItemType>;
   Children?: BlockObject[];
 } & BaseBlockObject;
 
@@ -263,35 +219,35 @@ export type NumberedListItemBlockObject = Omit<
   NumberedListItemBlockObjectResponse,
   "numbered_list_item"
 > & {
-  numbered_list_item: ObjectType<NumberedListItemType>;
+  numbered_list_item: ReplaceRichText<NumberedListItemType>;
   Children?: BlockObject[];
 } & BaseBlockObject;
 
 // 引用
 export type QuoteType = QuoteBlockObjectResponse["quote"];
 export type QuoteBlockObject = Omit<QuoteBlockObjectResponse, "quote"> & {
-  quote: ObjectType<QuoteType>;
+  quote: ReplaceRichText<QuoteType>;
   Children?: BlockObject[];
 } & BaseBlockObject;
 
 // ToDoリスト
 export type ToDoType = ToDoBlockObjectResponse["to_do"];
 export type ToDoBlockObject = Omit<ToDoBlockObjectResponse, "to_do"> & {
-  to_do: ObjectType<ToDoType>;
+  to_do: ReplaceRichText<ToDoType>;
   Children?: BlockObject[];
 } & BaseBlockObject;
 
 // トグル
 export type ToggleType = ToggleBlockObjectResponse["toggle"];
 export type ToggleBlockObject = Omit<ToggleBlockObjectResponse, "toggle"> & {
-  toggle: ObjectType<ToggleType>;
+  toggle: ReplaceRichText<ToggleType>;
   Children?: BlockObject[];
 } & BaseBlockObject;
 
 // コールアウト
 export type CalloutType = CalloutBlockObjectResponse["callout"];
 export type CalloutBlockObject = Omit<CalloutBlockObjectResponse, "callout"> & {
-  callout: ObjectType<CalloutType>;
+  callout: ReplaceRichText<CalloutType>;
   Children?: BlockObject[];
 } & BaseBlockObject;
 
@@ -301,7 +257,7 @@ export type TemplateBlockObject = Omit<
   TemplateBlockObjectResponse,
   "template"
 > & {
-  template: ObjectType<TemplateType>;
+  template: ReplaceRichText<TemplateType>;
   Children?: BlockObject[];
 } & BaseBlockObject;
 
@@ -343,7 +299,7 @@ export type TableBlockObject = TableBlockObjectResponse & {
 // コード
 export type CodeType = CodeBlockObjectResponse["code"];
 export type CodeBlockObject = Omit<CodeBlockObjectResponse, "code"> & {
-  code: ObjectType<CodeType>;
+  code: ReplaceRichText<CodeType>;
 } & BaseBlockObject;
 
 // 数式
