@@ -25,16 +25,6 @@ export const CodeClient: FC<CodeClientProps> = ({ code, language }) => {
   const grammar =
     Prism.languages[language.toLowerCase()] || Prism.languages.javascript;
 
-  // TODO:
-  // if (language === "mermaid") {
-  //   mermaid.initialize({ startOnLoad: true, theme: "neutral" });
-  //   return (
-  //     <pre className="mermaid w-[100px] min-w-full overflow-x-auto whitespace-pre p-8 text-sm leading-5">
-  //       {code}
-  //     </pre>
-  //   );
-  // }
-
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(code);
@@ -53,21 +43,21 @@ export const CodeClient: FC<CodeClientProps> = ({ code, language }) => {
 
   return (
     <>
-      <div className="flex items-center justify-between px-4 py-2">
-        <span className="text-gray-500 text-sm">{language}</span>
+      <div className={"ptn-blk-code-preview-header"}>
+        <span className={"ptn-blk-code-preview-language"}>{language}</span>
         <button
           onClick={handleCopy}
-          className="copy block w-16 cursor-pointer rounded border-0 bg-[rgba(227,226,224,0.5)] text-[var(--fg)] leading-5"
+          className={"ptn-blk-code-preview-copy-button"}
         >
           Copy
         </button>
       </div>
-      <pre className="block w-[100px] min-w-full overflow-auto overflow-x-auto whitespace-pre px-8 pt-0 pb-8 text-sm leading-5 [&::-webkit-scrollbar-thumb]:bg-[rgb(211,209,203)] [&::-webkit-scrollbar-track]:bg-[rgb(237,236,233)] [&::-webkit-scrollbar]:h-[10px]">
+      <pre className={"ptn-blk-code-preview-pre"}>
         <code
           dangerouslySetInnerHTML={{
             __html: Prism.highlight(code, grammar, language),
           }}
-          className="!bg-[rgb(247,246,243)] rounded-none p-0 text-[var(--fg)]"
+          className={"ptn-blk-code-preview-code"}
         />
       </pre>
     </>

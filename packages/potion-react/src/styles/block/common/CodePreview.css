@@ -1,0 +1,59 @@
+.ptn-blk-code-preview-container {
+  width: 100px;
+  min-width: 100%;
+  overflow-x: auto;
+}
+
+.ptn-blk-code-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.ptn-blk-code-preview-language {
+  color: rgb(115, 115, 115);
+  font-size: 0.875rem;
+}
+
+.ptn-blk-code-preview-copy-button {
+  display: block;
+  width: 4rem;
+  cursor: pointer;
+  border: 0;
+  border-radius: 0.25rem;
+  background-color: rgba(227, 226, 224, 0.5);
+  color: var(--fg);
+  line-height: 1.25rem;
+}
+
+.ptn-blk-code-preview-pre {
+  display: block;
+  width: 100px;
+  min-width: 100%;
+  overflow: auto;
+  overflow-x: auto;
+  white-space: pre;
+  padding: 0 2rem 2rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.ptn-blk-code-preview-pre::-webkit-scrollbar {
+  height: 10px;
+}
+
+.ptn-blk-code-preview-pre::-webkit-scrollbar-thumb {
+  background-color: rgb(211, 209, 203);
+}
+
+.ptn-blk-code-preview-pre::-webkit-scrollbar-track {
+  background-color: rgb(237, 236, 233);
+}
+
+.ptn-blk-code-preview-code {
+  background-color: rgb(247, 246, 243);
+  border-radius: 0;
+  padding: 0;
+  color: var(--fg);
+}
