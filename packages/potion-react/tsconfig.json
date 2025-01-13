@@ -2,18 +2,25 @@
     "compilerOptions": {
         "target": "ES2022",
         "module": "NodeNext",
+        "lib": [
+            "ES2022",
+            "DOM",
+            "DOM.Iterable"
+        ],
         "declaration": true,
-        "sourceMap": true,
         "outDir": "./dist",
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
+        "rootDir": "./src",
         "strict": true,
+        "esModuleInterop": true,
         "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
         "jsx": "react-jsx",
-        "moduleResolution": "nodenext",
     },
     "include": [
         "src/**/*.ts",
-        "src/**/*.tsx"
+        "src/**/*.tsx",
+        "src/**/*.js",
+        "src/**/*.jsx",
+        "src/**/*.css"
     ]
 }

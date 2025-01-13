@@ -1,63 +1,15 @@
-import {
-  Bookmark,
-  BulletedListItem,
-  Callout,
-  CodeBlock,
-  Column,
-  ColumnList,
-  Divider,
-  Embed,
-  Heading1,
-  Heading2,
-  Heading3,
-  Image as ImageBlock,
-  LinkPreview,
-  LinkToPage,
-  NumberedListItem,
-  Paragraph,
-  Quote,
-  ToDo,
-  Toggle,
-  Video,
-} from "../components";
 import type { BlockComponentMap } from "../types/blocks-types";
+import { defaultRenderBlocks } from "./defaultRenderBlocks";
 
 type CreateRenderBlocksProps = {
-  customBlocks: Partial<BlockComponentMap["blocks"]>;
+  customBlocks?: Partial<BlockComponentMap["blocks"]>;
 };
 
-const defaultRenderBlocks: BlockComponentMap["blocks"] = {
-  paragraph: Paragraph,
-  heading_1: Heading1,
-  heading_2: Heading2,
-  heading_3: Heading3,
-  quote: Quote,
-  code: CodeBlock,
-  toggle: Toggle,
-  to_do: ToDo,
-  bulleted_list_item: BulletedListItem,
-  numbered_list_item: NumberedListItem,
-  image: ImageBlock,
-  video: Video,
-  bookmark: Bookmark,
-  embed: Embed,
-  link_to_page: LinkToPage,
-  link_preview: LinkPreview,
-  callout: Callout,
-  divider: Divider,
-  column_list: ColumnList,
-  column: Column,
-};
-
-export const createRenderBlocks = ({
-  customBlocks,
-}: CreateRenderBlocksProps): BlockComponentMap => {
+export function createRenderBlocks(options?: CreateRenderBlocksProps) {
   return {
     blocks: {
       ...defaultRenderBlocks,
-      ...customBlocks,
+      ...options?.customBlocks,
     },
   };
-};
-
-export { defaultRenderBlocks };
+}
