@@ -35,7 +35,7 @@
     }
   },
   "linter": {
-    "ignore": [],
+    "ignore": ["packages/potion-react/src"],
     "rules": {
       "a11y": {
         "noAriaUnsupportedElements": "error",
