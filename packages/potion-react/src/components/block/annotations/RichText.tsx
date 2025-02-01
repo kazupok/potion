@@ -1,20 +1,80 @@
 import katex from "katex";
-import type { RichTextItem } from "potion-core";
 import { FC } from "react";
-import { MentionPage } from "../common/MentionPage";
-import { Anchor } from "./Anchor";
-import { Bold } from "./Bold";
-import { Code } from "./Code";
-import { Color } from "./Color";
-import { Italic } from "./Italic";
-import { Strikethrough } from "./Strikethrough";
-import { Underline } from "./Underline";
+import { RichTextProps } from "../../../types";
 
-export type RichTextProps = {
-  richText: RichTextItem;
-};
+export const RichText: FC<RichTextProps> = ({
+  richText,
+  blockComponentMap,
+}) => {
+  const { annotations, commonComponents } = blockComponentMap;
 
-export const RichText: FC<RichTextProps> = ({ richText }) => {
+  const Anchor = ({ children }: { children: React.ReactNode }) => {
+    if (annotations.anchor) {
+      return (
+        <annotations.anchor richText={richText}>{children}</annotations.anchor>
+      );
+    }
+    return <>{children}</>;
+  };
+
+  const Bold = ({ children }: { children: React.ReactNode }) => {
+    if (annotations.bold) {
+      return (
+        <annotations.bold richText={richText}>{children}</annotations.bold>
+      );
+    }
+    return <>{children}</>;
+  };
+
+  const Code = ({ children }: { children: React.ReactNode }) => {
+    if (annotations.code) {
+      return (
+        <annotations.code richText={richText}>{children}</annotations.code>
+      );
+    }
+    return <>{children}</>;
+  };
+
+  const Color = ({ children }: { children: React.ReactNode }) => {
+    if (annotations.color) {
+      return (
+        <annotations.color richText={richText}>{children}</annotations.color>
+      );
+    }
+    return <>{children}</>;
+  };
+
+  const Italic = ({ children }: { children: React.ReactNode }) => {
+    if (annotations.italic) {
+      return (
+        <annotations.italic richText={richText}>{children}</annotations.italic>
+      );
+    }
+    return <>{children}</>;
+  };
+
+  const Strikethrough = ({ children }: { children: React.ReactNode }) => {
+    if (annotations.strikethrough) {
+      return (
+        <annotations.strikethrough richText={richText}>
+          {children}
+        </annotations.strikethrough>
+      );
+    }
+    return <>{children}</>;
+  };
+
+  const Underline = ({ children }: { children: React.ReactNode }) => {
+    if (annotations.underline) {
+      return (
+        <annotations.underline richText={richText}>
+          {children}
+        </annotations.underline>
+      );
+    }
+    return <>{children}</>;
+  };
+
   const renderContent = () => {
     if (richText.type === "text") {
       if (richText.plain_text) {
@@ -55,10 +115,12 @@ export const RichText: FC<RichTextProps> = ({ richText }) => {
       richText.mention.page.id
     ) {
       return (
-        <MentionPage
-          pageId={richText.mention.page.id}
-          page={richText.Mention?.Page || undefined}
-        />
+        commonComponents.mention && (
+          <commonComponents.mention
+            pageId={richText.mention.page.id}
+            page={richText.Page || undefined}
+          />
+        )
       );
     }
 
@@ -67,13 +129,13 @@ export const RichText: FC<RichTextProps> = ({ richText }) => {
 
   return (
     <span className="ptn-blk-annotations-richtext">
-      <Anchor richText={richText}>
-        <Code richText={richText}>
-          <Color richText={richText}>
-            <Underline richText={richText}>
-              <Strikethrough richText={richText}>
-                <Italic richText={richText}>
-                  <Bold richText={richText}>{renderContent()}</Bold>
+      <Anchor>
+        <Code>
+          <Color>
+            <Underline>
+              <Strikethrough>
+                <Italic>
+                  <Bold>{renderContent()}</Bold>
                 </Italic>
               </Strikethrough>
             </Underline>

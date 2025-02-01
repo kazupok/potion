@@ -1,7 +1,6 @@
 import { getClassNameBlockId, snakeToKebab } from "potion-core";
 import { FC, ReactNode } from "react";
 import { BulletedListItemBlockProps } from "../../../types/blocks-types";
-import { RichText } from "../annotations";
 import { RenderBlock } from "../common/RenderBlock";
 
 const listStyles = [
@@ -28,15 +27,23 @@ export const BulletedListItem: FC<BulletedListItemBlockProps> = ({
 }) => {
   const level = blockObject.Level;
   const style = listStyles[level % listLength];
+  const { annotations } = blockComponentMap;
 
   return (
     <Root level={level} className={getClassNameBlockId(blockObject)}>
       <li
         className={`ptn-blk-blocks-bulleted-item ${snakeToKebab(blockObject.bulleted_list_item.color)}`}
       >
-        {blockObject.bulleted_list_item.rich_text.map((richText, index) => (
-          <RichText key={index} richText={richText} />
-        ))}
+        {blockObject.bulleted_list_item.rich_text.map(
+          (richText, index) =>
+            annotations.rich_text && (
+              <annotations.rich_text
+                key={index}
+                richText={richText}
+                blockComponentMap={blockComponentMap}
+              />
+            ),
+        )}
       </li>
       {blockObject.has_children && blockObject.Children && (
         <ul className={`ptn-blk-blocks-bulleted-nested ${style}`}>

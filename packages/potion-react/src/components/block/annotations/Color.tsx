@@ -1,9 +1,6 @@
-import { RichTextItemResponse, snakeToKebab } from "potion-core";
-import type { FC, PropsWithChildren } from "react";
-
-export type ColorProps = PropsWithChildren & {
-  richText: RichTextItemResponse;
-};
+import { snakeToKebab } from "potion-core";
+import type { FC } from "react";
+import { ColorProps } from "../../../types";
 
 export const Color: FC<ColorProps> = ({ richText, children }) => {
   if (richText.annotations.color && richText.annotations.color !== "default") {

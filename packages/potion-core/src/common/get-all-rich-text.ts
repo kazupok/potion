@@ -1,9 +1,9 @@
 import type { RichTextItemResponse } from "../notion";
-import type { MentionPage } from "../types/blocks-types";
+import type { GetMentionPage } from "../types";
 
 export type GetAllRichTextProps = {
   richText: RichTextItemResponse[];
-  getMentionPage: (pageId: string) => Promise<MentionPage | null>;
+  getMentionPage: GetMentionPage;
 };
 
 export const getAllRichText = async ({

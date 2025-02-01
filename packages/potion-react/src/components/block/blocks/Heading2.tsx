@@ -5,7 +5,6 @@ import {
 } from "potion-core";
 import { FC } from "react";
 import { Heading2BlockProps } from "../../../types/blocks-types";
-import { RichText } from "../annotations";
 import { RenderBlock } from "../common/RenderBlock";
 
 export const Heading2: FC<Heading2BlockProps> = ({
@@ -13,6 +12,7 @@ export const Heading2: FC<Heading2BlockProps> = ({
   blockComponentMap,
 }) => {
   const headingId = getHeadingId(blockObject);
+  const { annotations } = blockComponentMap;
 
   if (isToggleableHeading(blockObject)) {
     return (
@@ -26,9 +26,16 @@ export const Heading2: FC<Heading2BlockProps> = ({
             className="ptn-blk-blocks-heading-link"
           >
             <h4 className={getClassNameBlockId(blockObject)}>
-              {blockObject.heading_2.rich_text.map((richText, index) => (
-                <RichText key={index} richText={richText} />
-              ))}
+              {blockObject.heading_2.rich_text.map(
+                (richText, index) =>
+                  annotations.rich_text && (
+                    <annotations.rich_text
+                      key={index}
+                      richText={richText}
+                      blockComponentMap={blockComponentMap}
+                    />
+                  ),
+              )}
             </h4>
           </a>
         </summary>
@@ -49,9 +56,16 @@ export const Heading2: FC<Heading2BlockProps> = ({
       <h4
         className={`ptn-blk-blocks-heading2 ptn-blk-blocks-heading2-container ${getClassNameBlockId(blockObject)}`}
       >
-        {blockObject.heading_2.rich_text.map((richText, index) => (
-          <RichText key={index} richText={richText} />
-        ))}
+        {blockObject.heading_2.rich_text.map(
+          (richText, index) =>
+            annotations.rich_text && (
+              <annotations.rich_text
+                key={index}
+                richText={richText}
+                blockComponentMap={blockComponentMap}
+              />
+            ),
+        )}
       </h4>
     </a>
   );

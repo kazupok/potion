@@ -36,23 +36,11 @@ import type {
   UnsupportedBlockObjectResponse,
   VideoBlockObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
-import type { Metadata } from "./common-types";
-
-export type MentionPage =
-  | {
-      title: string;
-      url: string;
-      icon: {
-        emoji: string;
-        url: string;
-      };
-    }
-  | undefined;
+import type { MentionPage, Metadata } from "./common-types";
 
 export type MentionRichTextItem = MentionRichTextItemResponse & {
-  Mention?: {
-    Page?: MentionPage | null;
-  };
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  Page?: MentionPage | any;
 };
 
 export type RichTextItem =
@@ -331,7 +319,8 @@ export type ColumnListBlockObject = ColumnListBlockObjectResponse & {
 export type LinkToPageType = LinkToPageBlockObjectResponse["link_to_page"];
 export type LinkToPageBlockObject = LinkToPageBlockObjectResponse &
   BaseBlockObject & {
-    Page: MentionPage | null;
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    Page: MentionPage | any;
   };
 
 // テーブル行

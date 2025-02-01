@@ -1,6 +1,5 @@
-import type { Client } from "@notionhq/client";
-import type { Metadata } from "../types";
-import type { BlockObject, MentionPage } from "../types/blocks-types";
+import type { GetAllBlocksByBlockIdProps } from "../types";
+import type { BlockObject } from "../types/blocks-types";
 import { getMetadata } from "../utils";
 import {
   hasChildrenBlock,
@@ -14,18 +13,6 @@ const defaultOptions = {
   disableGetMetadata: false,
   getMentionPage: undefined,
   getMetadata,
-};
-
-export type GetAllBlocksByBlockIdProps = {
-  client: Client;
-  blockId: string;
-  level?: number;
-  options?: {
-    disableGetMentionPage?: boolean;
-    disableGetMetadata?: boolean;
-    getMentionPage?: (pageId: string) => Promise<MentionPage | null>;
-    getMetadata?: (url: URL) => Promise<Metadata | null>;
-  };
 };
 
 export const getAllBlocksByBlockId = async ({

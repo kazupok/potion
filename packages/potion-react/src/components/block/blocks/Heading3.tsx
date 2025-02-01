@@ -5,13 +5,13 @@ import {
 } from "potion-core";
 import { FC } from "react";
 import { Heading3BlockProps } from "../../../types/blocks-types";
-import { RichText } from "../annotations";
 import { RenderBlock } from "../common/RenderBlock";
 export const Heading3: FC<Heading3BlockProps> = ({
   blockObject,
   blockComponentMap,
 }) => {
   const headingId = getHeadingId(blockObject);
+  const { annotations } = blockComponentMap;
 
   if (isToggleableHeading(blockObject)) {
     return (
@@ -25,9 +25,16 @@ export const Heading3: FC<Heading3BlockProps> = ({
             className="ptn-blk-blocks-heading-link"
           >
             <h3 className={getClassNameBlockId(blockObject)}>
-              {blockObject.heading_3.rich_text.map((richText, index) => (
-                <RichText key={index} richText={richText} />
-              ))}
+              {blockObject.heading_3.rich_text.map(
+                (richText, index) =>
+                  annotations.rich_text && (
+                    <annotations.rich_text
+                      key={index}
+                      richText={richText}
+                      blockComponentMap={blockComponentMap}
+                    />
+                  ),
+              )}
             </h3>
           </a>
         </summary>
@@ -48,9 +55,16 @@ export const Heading3: FC<Heading3BlockProps> = ({
       <h5
         className={`ptn-blk-blocks-heading3 ptn-blk-blocks-heading3-container ${getClassNameBlockId(blockObject)}`}
       >
-        {blockObject.heading_3.rich_text.map((richText, index) => (
-          <RichText key={index} richText={richText} />
-        ))}
+        {blockObject.heading_3.rich_text.map(
+          (richText, index) =>
+            annotations.rich_text && (
+              <annotations.rich_text
+                key={index}
+                richText={richText}
+                blockComponentMap={blockComponentMap}
+              />
+            ),
+        )}
       </h5>
     </a>
   );

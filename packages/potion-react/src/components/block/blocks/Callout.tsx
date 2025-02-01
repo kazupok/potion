@@ -1,12 +1,13 @@
 import { getClassNameBlockId, snakeToKebab } from "potion-core";
 import { FC } from "react";
 import { CalloutBlockProps } from "../../../types/blocks-types";
-import { RichText } from "../annotations";
 import { RenderBlock } from "../common/RenderBlock";
 export const Callout: FC<CalloutBlockProps> = ({
   blockObject,
   blockComponentMap,
 }) => {
+  const { annotations } = blockComponentMap;
+
   return (
     <div
       className={`ptn-blk-blocks-callout ${getClassNameBlockId(blockObject)} ${snakeToKebab(blockObject.callout.color)}`}
@@ -31,9 +32,16 @@ export const Callout: FC<CalloutBlockProps> = ({
         </div>
       )}
       <div className="ptn-blk-blocks-callout-content">
-        {blockObject.callout.rich_text.map((richText, index) => (
-          <RichText key={index} richText={richText} />
-        ))}
+        {blockObject.callout.rich_text.map(
+          (richText, index) =>
+            annotations.rich_text && (
+              <annotations.rich_text
+                key={index}
+                richText={richText}
+                blockComponentMap={blockComponentMap}
+              />
+            ),
+        )}
         {blockObject.Children && (
           <RenderBlock
             blockObjects={blockObject.Children}

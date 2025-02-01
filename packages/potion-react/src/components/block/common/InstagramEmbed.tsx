@@ -27,12 +27,12 @@ export const InstagramEmbed: FC<InstagramEmbedProps> = ({ embedUrl }) => {
       <blockquote
         className="ptn-blk-embed-instagram"
         data-instgrm-captioned
-        data-instgrm-permalink={`https://www.instagram.com/p/${id}/?utm_source=ig_embed&amp;utm_campaign=loading`}
+        data-instgrm-permalink={`https://www.instagram.com/reel/${id}/?utm_source=ig_embed&amp;utm_campaign=loading`}
         data-instgrm-version="14"
       >
         <div className="ptn-blk-embed-instagram-container">
           <a
-            href={`https://www.instagram.com/p/${id}/?utm_source=ig_embed&amp;utm_campaign=loading`}
+            href={`https://www.instagram.com/reel/${id}/?utm_source=ig_embed&amp;utm_campaign=loading`}
             className="ptn-blk-embed-instagram-link"
             target="_blank"
             rel="noreferrer"

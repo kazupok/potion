@@ -1,9 +1,5 @@
-import type { RichTextItemResponse } from "potion-core";
-import type { FC, PropsWithChildren } from "react";
-
-export type StrikethroughProps = PropsWithChildren & {
-  richText: RichTextItemResponse;
-};
+import type { FC } from "react";
+import { StrikethroughProps } from "../../../types";
 
 export const Strikethrough: FC<StrikethroughProps> = ({
   richText,

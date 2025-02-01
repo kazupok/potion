@@ -1,9 +1,5 @@
-import type { RichTextItemResponse } from "potion-core";
-import type { FC, PropsWithChildren } from "react";
-
-export type ItalicProps = PropsWithChildren & {
-  richText: RichTextItemResponse;
-};
+import type { FC } from "react";
+import { ItalicProps } from "../../../types";
 
 export const Italic: FC<ItalicProps> = ({ richText, children }) => {
   if (richText.annotations.italic) {

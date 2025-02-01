@@ -2,12 +2,13 @@ import { getClassNameBlockId } from "potion-core";
 import { snakeToKebab } from "potion-core";
 import { FC } from "react";
 import type { ToDoBlockProps } from "../../../types/blocks-types";
-import { RichText } from "../annotations";
 import { RenderBlock } from "../common/RenderBlock";
 export const ToDo: FC<ToDoBlockProps> = ({
   blockObject,
   blockComponentMap,
 }) => {
+  const { annotations } = blockComponentMap;
+
   return (
     <div
       className={`ptn-blk-blocks-todo ${getClassNameBlockId(blockObject)} ${snakeToKebab(blockObject.to_do.color)}`}
@@ -22,11 +23,24 @@ export const ToDo: FC<ToDoBlockProps> = ({
         if (blockObject.to_do.checked) {
           return (
             <s key={index} className="ptn-blk-blocks-todo-checked">
-              <RichText richText={richText} />
+              {annotations.rich_text && (
+                <annotations.rich_text
+                  richText={richText}
+                  blockComponentMap={blockComponentMap}
+                />
+              )}
             </s>
           );
         }
-        return <RichText key={index} richText={richText} />;
+        return (
+          annotations.rich_text && (
+            <annotations.rich_text
+              key={index}
+              richText={richText}
+              blockComponentMap={blockComponentMap}
+            />
+          )
+        );
       })}
       {blockObject.Children && (
         <RenderBlock

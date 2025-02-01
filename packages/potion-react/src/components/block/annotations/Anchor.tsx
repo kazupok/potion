@@ -1,9 +1,5 @@
-import { RichTextItemResponse } from "potion-core";
-import type { FC, PropsWithChildren } from "react";
-
-export type AnchorProps = PropsWithChildren & {
-  richText: RichTextItemResponse;
-};
+import type { FC } from "react";
+import { AnchorProps } from "../../../types";
 
 export const Anchor: FC<AnchorProps> = ({ richText, children }) => {
   if (richText.href && !(richText.type === "mention")) {

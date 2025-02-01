@@ -25,6 +25,8 @@ import type {
   ParagraphBlockObject,
   PdfBlockObject,
   QuoteBlockObject,
+  RichTextItem,
+  RichTextItemResponse,
   SyncedBlockBlockObject,
   TableBlockObject,
   TableOfContentsBlockObject,
@@ -36,6 +38,7 @@ import type {
   VideoBlockObject,
 } from "potion-core";
 import type React from "react";
+import { PropsWithChildren } from "react";
 
 export type BlockProps<T extends BlockObject> = {
   blockObject: T;
@@ -43,10 +46,6 @@ export type BlockProps<T extends BlockObject> = {
 };
 
 export type ComponentType<T extends BlockObject> = React.FC<BlockProps<T>>;
-
-// export type ServerComponentType<T extends BlockObject> = (
-//   props: BlockProps<T>,
-// ) => Promise<any>;
 
 export type BlockComponentMap = {
   blocks: {
@@ -75,6 +74,19 @@ export type BlockComponentMap = {
     synced_block?: React.FC<SyncedBlockBlockProps>;
     table_of_contents?: React.FC<TableOfContentsBlockProps>;
     table_row?: React.FC<TableRowBlockProps>;
+  };
+  annotations: {
+    anchor?: React.FC<AnchorProps>;
+    bold?: React.FC<BoldProps>;
+    code?: React.FC<CodeProps>;
+    color?: React.FC<ColorProps>;
+    italic?: React.FC<ItalicProps>;
+    rich_text?: React.FC<RichTextProps>;
+    strikethrough?: React.FC<StrikethroughProps>;
+    underline?: React.FC<UnderlineProps>;
+  };
+  commonComponents: {
+    mention?: React.FC<MentionProps>;
   };
 };
 
@@ -187,7 +199,43 @@ export type AllBlockProps =
 /**
  * annotation types
  */
+export type RichTextProps = {
+  richText: RichTextItem;
+  blockComponentMap: BlockComponentMap;
+};
+
+export type AnchorProps = PropsWithChildren & {
+  richText: RichTextItemResponse;
+};
+
+export type BoldProps = PropsWithChildren & {
+  richText: RichTextItemResponse;
+};
+
+export type CodeProps = PropsWithChildren & {
+  richText: RichTextItemResponse;
+};
+
+export type ColorProps = PropsWithChildren & {
+  richText: RichTextItemResponse;
+};
+
+export type ItalicProps = PropsWithChildren & {
+  richText: RichTextItemResponse;
+};
+
+export type StrikethroughProps = PropsWithChildren & {
+  richText: RichTextItemResponse;
+};
+
+export type UnderlineProps = PropsWithChildren & {
+  richText: RichTextItemResponse;
+};
+
+/**
+ * Common types
+ */
 export type MentionProps = {
   pageId: string;
-  page: MentionPage;
+  page: MentionPage | any;
 };
