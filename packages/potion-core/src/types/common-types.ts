@@ -31,5 +31,6 @@ export type GetAllBlocksByBlockIdProps = {
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     getMentionPage?: (pageId: string) => Promise<any>;
     getMetadata?: (url: URL) => Promise<Metadata | null>;
+    imageHandler?: (url: URL) => Promise<URL>;
   };
 };

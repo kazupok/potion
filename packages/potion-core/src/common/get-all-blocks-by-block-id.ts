@@ -1,5 +1,5 @@
 import type { GetAllBlocksByBlockIdProps } from "../types";
-import type { BlockObject } from "../types/blocks-types";
+import type { BlockObject, ImageBlockObject } from "../types/blocks-types";
 import { getMetadata } from "../utils";
 import {
   hasChildrenBlock,
@@ -54,6 +54,25 @@ export const getAllBlocksByBlockId = async ({
         ...block,
         Children: childBlocks,
       } as BlockObject;
+    }
+
+    if (
+      block.type === "image" &&
+      block.image.type === "file" &&
+      options.imageHandler
+    ) {
+      const imageUrl = new URL(block.image.file.url);
+      const newImageUrl = await options.imageHandler(imageUrl);
+      block = {
+        ...block,
+        image: {
+          ...block.image,
+          file: {
+            ...block.image.file,
+            url: newImageUrl.toString(),
+          },
+        },
+      } as ImageBlockObject;
     }
 
     if (block.type === "column_list") {
