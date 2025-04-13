@@ -1,44 +1,67 @@
 "use client";
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 
 export type TikTokEmbedProps = {
   embedUrl: string;
 };
 
 export const TikTokEmbed: FC<TikTokEmbedProps> = ({ embedUrl }) => {
-  const url = new URL(embedUrl);
+  // クライアントサイドでのみ処理するための状態
+  const [isMounted, setIsMounted] = useState(false);
+  const [videoData, setVideoData] = useState<{
+    user: string;
+    videoId: string;
+  } | null>(null);
 
-  const user = url.pathname.split("/")[1];
-  const videoId = url.pathname.split("/")[3];
-
+  // コンポーネントがマウントされたらフラグを設定し、URL解析を行う
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://www.tiktok.com/embed.js";
-    script.async = true;
-    document.body.appendChild(script);
+    setIsMounted(true);
 
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+    try {
+      const url = new URL(embedUrl);
+      const user = url.pathname.split("/")[1];
+      const videoId = url.pathname.split("/")[3];
 
-  if (!user || !videoId) return <></>;
+      if (user && videoId) {
+        setVideoData({ user, videoId });
+      } else {
+        console.error("Invalid TikTok video URL: missing user or video ID");
+      }
+    } catch (e) {
+      console.error("Invalid TikTok URL:", e);
+    }
+  }, [embedUrl]);
+
+  // TikTok埋め込みスクリプトを読み込む
+  useEffect(() => {
+    if (isMounted && videoData) {
+      const script = document.createElement("script");
+      script.src = "https://www.tiktok.com/embed.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, [isMounted, videoData]);
+
+  // サーバーサイドまたはマウント前、またはビデオデータがない場合は何も表示しない
+  if (!isMounted || !videoData) {
+    return null;
+  }
 
   return (
     <div className="ptn-blk-embed-tiktok-container">
       <blockquote
-        className={"tiktok-embed"}
-        cite={url.toString()}
-        data-video-id={videoId}
+        className="tiktok-embed"
+        cite={embedUrl}
+        data-video-id={videoData.videoId}
       >
         <section>
           <a
             target="_blank"
-            title={user}
-            href="https://www.tiktok.com/{user}?refer=embed"
+            title={videoData.user}
+            href={`https://www.tiktok.com/${videoData.user}?refer=embed`}
             rel="noreferrer"
           >
-            {user}
+            {videoData.user}
           </a>
         </section>
       </blockquote>

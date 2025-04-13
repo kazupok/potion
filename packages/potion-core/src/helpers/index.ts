@@ -4,4 +4,5 @@ export * from "./get-file-path";
 export * from "./get-heading-id";
 export * from "./get-image-path";
 export * from "./get-video-path";
+export * from "./get-automation-property-text";
 export * from "./verify-url";

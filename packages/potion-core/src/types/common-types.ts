@@ -34,3 +34,13 @@ export type GetAllBlocksByBlockIdProps = {
     imageHandler?: (url: URL) => Promise<URL>;
   };
 };
+
+export type ImageFile = {
+  id: string;
+  url: string;
+};
+
+export type GetAllImageFilesProps = {
+  client: Client;
+  blockId: string;
+};

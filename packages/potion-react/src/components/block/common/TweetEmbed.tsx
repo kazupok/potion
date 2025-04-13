@@ -1,36 +1,55 @@
 "use client";
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 
 export type TweetEmbedProps = {
   embedUrl: string;
 };
 
 export const TweetEmbed: FC<TweetEmbedProps> = ({ embedUrl }) => {
-  const url = new URL(embedUrl);
-  const postURL =
-    url?.hostname === "x.com" || url?.hostname === "www.x.com"
-      ? new URL(url.pathname, "https://twitter.com")
-      : url;
+  // クライアントサイドでのみレンダリングするための状態
+  const [isMounted, setIsMounted] = useState(false);
+  const [tweetUrl, setTweetUrl] = useState<string | null>(null);
 
+  // コンポーネントがマウントされたらフラグを設定
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://platform.twitter.com/widgets.js";
-    script.async = true;
-    script.charset = "utf-8";
-    document.body.appendChild(script);
+    setIsMounted(true);
 
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+    // URLを処理
+    try {
+      const url = new URL(embedUrl);
 
-  if (!postURL) return <></>;
+      // X.comのURLをtwitter.comに変換
+      if (url.hostname === "x.com" || url.hostname === "www.x.com") {
+        const twitterUrl = new URL(url.pathname, "https://twitter.com");
+        setTweetUrl(twitterUrl.toString());
+      } else {
+        setTweetUrl(url.toString());
+      }
+    } catch (e) {
+      console.error("Invalid Twitter URL:", e);
+    }
+  }, [embedUrl]);
+
+  // Twitterウィジェットスクリプトを読み込む
+  useEffect(() => {
+    if (isMounted && tweetUrl) {
+      const script = document.createElement("script");
+      script.src = "https://platform.twitter.com/widgets.js";
+      script.async = true;
+      script.charset = "utf-8";
+      document.body.appendChild(script);
+    }
+  }, [isMounted, tweetUrl]);
+
+  // サーバーサイドまたはマウント前、または有効なURLがない場合は何も表示しない
+  if (!isMounted || !tweetUrl) {
+    return null;
+  }
 
   return (
     <div className="ptn-blk-embed-tweet-container">
       <blockquote className="twitter-tweet">
-        {/* biome-ignore lint/a11y/useAnchorContent: <explanation> */}
-        <a href={postURL.toString()}></a>
+        <a href={tweetUrl}></a>
       </blockquote>
     </div>
   );

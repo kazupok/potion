@@ -1,38 +1,68 @@
 "use client";
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 
 export type InstagramEmbedProps = {
   embedUrl: string;
 };
 
 export const InstagramEmbed: FC<InstagramEmbedProps> = ({ embedUrl }) => {
-  const url = new URL(embedUrl);
-  const id = url?.pathname?.split("/")[2];
+  // クライアントサイドでのみレンダリングするための状態
+  const [isMounted, setIsMounted] = useState(false);
+  const [postId, setPostId] = useState<string | null>(null);
 
+  // コンポーネントがマウントされたらフラグを設定
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "//www.instagram.com/embed.js";
-    script.async = true;
-    document.body.appendChild(script);
+    setIsMounted(true);
 
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+    // URLからIDを抽出
+    try {
+      const url = new URL(embedUrl);
+      const id = url.pathname.split("/")[2] || "";
+      if (id) {
+        setPostId(id);
+      } else {
+        console.error("Invalid Instagram post ID");
+      }
+    } catch (e) {
+      console.error("Invalid Instagram URL:", e);
+    }
+  }, [embedUrl]);
 
-  if (!url) return <></>;
+  // Instagram埋め込みスクリプトを読み込む
+  useEffect(() => {
+    if (isMounted && postId) {
+      // グローバルオブジェクトinstgrm が存在する場合は、直接 Embeds.process() を呼び出す
+      if (window.instgrm) {
+        window.instgrm.Embeds.process();
+      } else {
+        // スクリプトがまだ読み込まれていない場合は読み込む
+        const script = document.createElement("script");
+        script.src = "https://www.instagram.com/embed.js";
+        script.async = true;
+        script.onload = () => {
+          // スクリプト読み込み完了後に Embeds.process() を実行
+          window.instgrm?.Embeds.process();
+        };
+        document.body.appendChild(script);
+      }
+    }
+  }, [isMounted, postId]);
+
+  // サーバーサイドまたはマウント前、またはIDがない場合は何も表示しない
+  if (!isMounted || !postId) return null;
 
   return (
     <>
       <blockquote
-        className="ptn-blk-embed-instagram"
+        key={postId}
+        className="ptn-blk-embed-instagram instagram-media"
         data-instgrm-captioned
-        data-instgrm-permalink={`https://www.instagram.com/reel/${id}/?utm_source=ig_embed&amp;utm_campaign=loading`}
+        data-instgrm-permalink={`https://www.instagram.com/p/${postId}/?utm_source=ig_embed&amp;utm_campaign=loading`}
         data-instgrm-version="14"
       >
         <div className="ptn-blk-embed-instagram-container">
           <a
-            href={`https://www.instagram.com/reel/${id}/?utm_source=ig_embed&amp;utm_campaign=loading`}
+            href={`https://www.instagram.com/p/${postId}/?utm_source=ig_embed&amp;utm_campaign=loading`}
             className="ptn-blk-embed-instagram-link"
             target="_blank"
             rel="noreferrer"
@@ -93,13 +123,11 @@ export const InstagramEmbed: FC<InstagramEmbedProps> = ({ embedUrl }) => {
           </a>
           <p className="ptn-blk-embed-instagram-caption">
             <a
-              href={`https://www.instagram.com/p/${id}/?utm_source=ig_embed&amp;utm_campaign=loading`}
+              href={`https://www.instagram.com/p/${postId}/?utm_source=ig_embed&amp;utm_campaign=loading`}
               className="ptn-blk-embed-instagram-caption-link"
               target="_blank"
               rel="noreferrer"
-            >
-              {}
-            </a>
+            ></a>
           </p>
         </div>
       </blockquote>

@@ -1,6 +1,6 @@
 {
   "name": "potion-react",
-  "version": "0.0.29",
+  "version": "0.0.47",
   "main": "./dist",
   "types": "./dist/index.d.ts",
   "files": [
@@ -26,7 +26,7 @@
   "dependencies": {
     "katex": "^0.16.19",
     "mermaid": "^11.4.1",
-    "potion-core": "0.0.49",
+    "potion-core": "0.0.52",
     "prismjs": "^1.29.0",
     "react": "^19.0.0",
     "typescript": "latest"
