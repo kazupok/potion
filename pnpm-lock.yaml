@@ -129,8 +129,8 @@ importers:
         specifier: ^11.4.1
         version: 11.4.1
       potion-core:
-        specifier: 0.0.52
-        version: 0.0.52
+        specifier: 0.0.55
+        version: 0.0.55
       prismjs:
         specifier: ^1.29.0
         version: 1.29.0
@@ -1495,8 +1495,8 @@ packages:
   potion-core@0.0.50:
     resolution: {integrity: sha512-GctbtPtfwvnen7H22idHF65T5xrFJYa5u4iYGBCTlsKCxSWyuLM8s9oVgiJ7tEK9L361qiS2QaZRRahUsb3ucw==}
 
-  potion-core@0.0.52:
-    resolution: {integrity: sha512-ApigR2OxGPWwuItWu/Tc7pm07eBfAjztlZoRmxiML6s2z67MkX2xYLBKtupquPScgFp7Am4MJCj7ewP05HXOgQ==}
+  potion-core@0.0.55:
+    resolution: {integrity: sha512-wjrAdTpVGezhNOSCDum88ag+lmIMEAStZElKRctCSDjX/+yol6HNgpCRMGXVO9bLxEXEKR43jNVOCuBvNINe3w==}
 
   potion-react@0.0.29:
     resolution: {integrity: sha512-4YvDg4mFtVOGIbT8KjS3Snu2EMaotBr4m4+DPhAFoXN3uA8wlnBrVsqUpbun2bBr7dxSMSgveWuteyCqcsN8Rg==}
@@ -3227,7 +3227,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  potion-core@0.0.52:
+  potion-core@0.0.55:
     dependencies:
       '@notionhq/client': 2.2.15
       node-html-parser: 7.0.1
