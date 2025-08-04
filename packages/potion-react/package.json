@@ -1,13 +1,9 @@
 {
   "name": "potion-react",
-  "version": "0.0.47",
+  "version": "0.0.48",
   "main": "./dist",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**",
-    "dist/package.json",
-    "src/styles/**"
-  ],
+  "files": ["dist/**", "dist/package.json", "src/styles/**"],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -26,7 +22,7 @@
   "dependencies": {
     "katex": "^0.16.19",
     "mermaid": "^11.4.1",
-    "potion-core": "0.0.52",
+    "potion-core": "0.0.54",
     "prismjs": "^1.29.0",
     "react": "^19.0.0",
     "typescript": "latest"

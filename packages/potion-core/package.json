@@ -1,12 +1,9 @@
 {
   "name": "potion-core",
-  "version": "0.0.53",
+  "version": "0.0.54",
   "main": "./dist",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**",
-    "dist/package.json"
-  ],
+  "files": ["dist/**", "dist/package.json"],
   "scripts": {
     "build": "tsc",
     "dev": "npm run build -- --watch",
@@ -22,21 +19,11 @@
   },
   "typesVersions": {
     "*": {
-      "helpers": [
-        "./dist/helpers/index.d.ts"
-      ],
-      "common": [
-        "./dist/common/index.d.ts"
-      ],
-      "utils": [
-        "./dist/utils/index.d.ts"
-      ],
-      "types": [
-        "./dist/types/index.d.ts"
-      ],
-      "notion": [
-        "./dist/notion/index.d.ts"
-      ]
+      "helpers": ["./dist/helpers/index.d.ts"],
+      "common": ["./dist/common/index.d.ts"],
+      "utils": ["./dist/utils/index.d.ts"],
+      "types": ["./dist/types/index.d.ts"],
+      "notion": ["./dist/notion/index.d.ts"]
     }
   }
 }
