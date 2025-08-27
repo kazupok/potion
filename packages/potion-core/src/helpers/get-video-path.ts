@@ -1,4 +1,4 @@
-import type { VideoBlockObject } from "../types/blocks-types";
+import type { VideoBlockObject } from "../types/blocks-types.js";
 
 export const getVideoPath = (block: VideoBlockObject) => {
   if (block.video.type === "external") {

@@ -119,6 +119,9 @@ importers:
 
   packages/potion-react:
     dependencies:
+      '@notionhq/client':
+        specifier: ^4.0.2
+        version: 4.0.2
       katex:
         specifier: ^0.16.19
         version: 0.16.22
@@ -126,8 +129,8 @@ importers:
         specifier: ^11.4.1
         version: 11.10.1
       potion-core:
-        specifier: 0.0.55
-        version: 0.0.55
+        specifier: ^0.1.4
+        version: 0.1.4
       prismjs:
         specifier: ^1.29.0
         version: 1.30.0
@@ -1556,8 +1559,8 @@ packages:
   potion-core@0.0.50:
     resolution: {integrity: sha512-GctbtPtfwvnen7H22idHF65T5xrFJYa5u4iYGBCTlsKCxSWyuLM8s9oVgiJ7tEK9L361qiS2QaZRRahUsb3ucw==}
 
-  potion-core@0.0.55:
-    resolution: {integrity: sha512-wjrAdTpVGezhNOSCDum88ag+lmIMEAStZElKRctCSDjX/+yol6HNgpCRMGXVO9bLxEXEKR43jNVOCuBvNINe3w==}
+  potion-core@0.1.4:
+    resolution: {integrity: sha512-GhYcJ2lfddRxLcAcjdgf/+/Bz07C8o1JWMVLgDgfMPbE5dy/oV3EvOlQCOzZ9et+or8iRcLihxBsQe/Bz/fu9Q==}
 
   potion-react@0.0.29:
     resolution: {integrity: sha512-4YvDg4mFtVOGIbT8KjS3Snu2EMaotBr4m4+DPhAFoXN3uA8wlnBrVsqUpbun2bBr7dxSMSgveWuteyCqcsN8Rg==}
@@ -3341,13 +3344,10 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  potion-core@0.0.55:
+  potion-core@0.1.4:
     dependencies:
-      '@notionhq/client': 2.3.0
-      node-html-parser: 7.0.1
+      '@notionhq/client': 4.0.2
       typescript: 5.9.2
-    transitivePeerDependencies:
-      - encoding
 
   potion-react@0.0.29:
     dependencies:

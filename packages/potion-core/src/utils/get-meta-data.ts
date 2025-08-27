@@ -1,4 +1,4 @@
-import type { Metadata } from "../types";
+import type { Metadata } from "../types/index.js";
 
 // Web-compatible HTML parser using DOMParser (available in browsers and Cloudflare Workers)
 const parseHTML = (html: string): Document => {

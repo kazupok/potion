@@ -1,4 +1,4 @@
-import type { BlockObject, GetAllImageFilesProps, ImageFile } from "../types";
+import type { BlockObject, GetAllImageFilesProps, ImageFile } from "../types/index.js";
 
 export const getAllImageFiles = async ({
   client,

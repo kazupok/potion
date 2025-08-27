@@ -2,7 +2,7 @@ import type {
   Heading1BlockObject,
   Heading2BlockObject,
   Heading3BlockObject,
-} from "../types/blocks-types";
+} from "../types/blocks-types.js";
 
 export const getHeadingId = (
   block: Heading1BlockObject | Heading2BlockObject | Heading3BlockObject,

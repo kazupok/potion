@@ -1,4 +1,4 @@
-import { pathJoin } from "../utils/path-join";
+import { pathJoin } from "../utils/path-join.js";
 
 export type GetFilePathProps = {
   basePath: string;

@@ -1,4 +1,4 @@
-import type { NotionPropertyValue } from "../types/database-types";
+import type { NotionPropertyValue } from "../types/database-types.js";
 
 export function isPropertyType<T extends NotionPropertyValue["type"]>(
   property: unknown,

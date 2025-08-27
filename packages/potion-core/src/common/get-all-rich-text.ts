@@ -1,6 +1,6 @@
-import type { RichTextItemResponse } from "../notion";
-import type { GetMentionPage } from "../types";
-import type { RichTextItem } from "../types/blocks-types";
+import type { RichTextItemResponse } from "../notion/index.js";
+import type { GetMentionPage } from "../types/index.js";
+import type { RichTextItem } from "../types/blocks-types.js";
 
 export type GetAllRichTextProps = {
   richText: RichTextItemResponse[];

@@ -9,7 +9,7 @@ import type {
   ToggleableHeading1,
   ToggleableHeading2,
   ToggleableHeading3,
-} from "../types/blocks-types";
+} from "../types/blocks-types.js";
 
 export function isToggleableHeading(
   block: Heading1BlockObject | Heading2BlockObject | Heading3BlockObject,

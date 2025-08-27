@@ -1,13 +1,13 @@
-import type { GetAllBlocksByBlockIdProps } from "../types";
-import type { BlockObject, ImageBlockObject } from "../types/blocks-types";
+import type { GetAllBlocksByBlockIdProps } from "../types/index.js";
+import type { BlockObject, ImageBlockObject } from "../types/blocks-types.js";
 import type { RichTextItemResponse } from "@notionhq/client/build/src/api-endpoints";
-import { getMetadata } from "../utils";
+import { getMetadata } from "../utils/index.js";
 import {
   hasChildrenBlock,
   hasMetadataBlock,
   hasRichTextBlock,
-} from "./block-type-guard";
-import { getAllRichText } from "./get-all-rich-text";
+} from "./block-type-guard.js";
+import { getAllRichText } from "./get-all-rich-text.js";
 
 const defaultOptions = {
   disableGetMentionPage: false,
