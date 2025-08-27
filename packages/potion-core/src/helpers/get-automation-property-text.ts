@@ -20,10 +20,13 @@ export const getAutomationPropertyText = (
     // rich_textが配列で、最初の要素のplain_textを取得
     return property.rich_text[0]?.plain_text || "";
   } catch (error) {
-    console.error(
-      `プロパティ「${propertyName}」の取得中にエラーが発生しました:`,
-      error,
-    );
+    // Optional logging - allow environments to define their own logging
+    if (typeof console !== 'undefined' && console.error) {
+      console.error(
+        `プロパティ「${propertyName}」の取得中にエラーが発生しました:`,
+        error,
+      );
+    }
     return "";
   }
 };

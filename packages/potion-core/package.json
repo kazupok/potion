@@ -1,8 +1,16 @@
 {
   "name": "potion-core",
-  "version": "0.0.56",
-  "main": "./dist",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "files": [
     "dist/**",
     "dist/package.json"
@@ -14,12 +22,10 @@
   },
   "dependencies": {
     "@notionhq/client": "^4.0.2",
-    "node-html-parser": "^7.0.1",
     "typescript": "latest"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.11",
-    "@types/node": "^20"
+    "@changesets/cli": "^2.27.11"
   },
   "typesVersions": {
     "*": {
