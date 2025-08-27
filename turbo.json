@@ -1,12 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "extends": ["//root"],
-  "ui": "tui",
-  "tasks": {
-    "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**"],
+
       "cache": false
     },
     "format": {},
