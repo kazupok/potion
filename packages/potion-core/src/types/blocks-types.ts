@@ -25,6 +25,7 @@ import type {
   ParagraphBlockObjectResponse,
   PdfBlockObjectResponse,
   QuoteBlockObjectResponse,
+  RichTextItemResponse,
   SyncedBlockBlockObjectResponse,
   TableBlockObjectResponse,
   TableOfContentsBlockObjectResponse,
@@ -38,15 +39,32 @@ import type {
 } from "@notionhq/client/build/src/api-endpoints";
 import type { MentionPage, Metadata } from "./common-types";
 
-export type MentionRichTextItem = MentionRichTextItemResponse & {
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  Page?: MentionPage | any;
+// Base properties shared by all RichText items
+export interface RichTextItemCommon {
+  plain_text: string;
+  href: string | null;
+  annotations: {
+    bold: boolean;
+    italic: boolean;
+    strikethrough: boolean;
+    underline: boolean;
+    code: boolean;
+    color: unknown; // v4対応: ApiColorとstringの両方に対応
+  };
+}
+
+export type MentionRichTextItem = MentionRichTextItemResponse & RichTextItemCommon & {
+  Page?: MentionPage;
 };
 
+export type ExtendedTextRichTextItemResponse = TextRichTextItemResponse & RichTextItemCommon;
+
+export type ExtendedEquationRichTextItemResponse = EquationRichTextItemResponse & RichTextItemCommon;
+
 export type RichTextItem =
-  | TextRichTextItemResponse
+  | ExtendedTextRichTextItemResponse
   | MentionRichTextItem
-  | EquationRichTextItemResponse;
+  | ExtendedEquationRichTextItemResponse;
 
 export type BaseBlockObject = {
   Level: number;
@@ -125,7 +143,7 @@ type ObjectTypeHasRichText =
   | CodeType;
 
 type ReplaceRichText<T extends ObjectTypeHasRichText> = Omit<T, "rich_text"> & {
-  rich_text: RichTextItem[];
+  rich_text: RichTextItemResponse[];
 };
 
 type ReplaceToggleable<

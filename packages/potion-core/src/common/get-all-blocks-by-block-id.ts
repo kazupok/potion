@@ -1,5 +1,6 @@
 import type { GetAllBlocksByBlockIdProps } from "../types";
 import type { BlockObject, ImageBlockObject } from "../types/blocks-types";
+import type { RichTextItemResponse } from "@notionhq/client/build/src/api-endpoints";
 import { getMetadata } from "../utils";
 import {
   hasChildrenBlock,
@@ -100,7 +101,7 @@ export const getAllBlocksByBlockId = async ({
           rich_text: await getAllRichText({
             richText: block.paragraph.rich_text,
             getMentionPage: options.getMentionPage,
-          }),
+          }) as unknown as RichTextItemResponse[],
         };
       }
       if (block.type === "heading_1") {
@@ -109,7 +110,7 @@ export const getAllBlocksByBlockId = async ({
           rich_text: await getAllRichText({
             richText: block.heading_1.rich_text,
             getMentionPage: options.getMentionPage,
-          }),
+          }) as unknown as RichTextItemResponse[],
         };
       }
       if (block.type === "heading_2") {
@@ -118,7 +119,7 @@ export const getAllBlocksByBlockId = async ({
           rich_text: await getAllRichText({
             richText: block.heading_2.rich_text,
             getMentionPage: options.getMentionPage,
-          }),
+          }) as unknown as RichTextItemResponse[],
         };
       }
       if (block.type === "heading_3") {
@@ -127,7 +128,7 @@ export const getAllBlocksByBlockId = async ({
           rich_text: await getAllRichText({
             richText: block.heading_3.rich_text,
             getMentionPage: options.getMentionPage,
-          }),
+          }) as unknown as RichTextItemResponse[],
         };
       }
       if (block.type === "quote") {
@@ -136,7 +137,7 @@ export const getAllBlocksByBlockId = async ({
           rich_text: await getAllRichText({
             richText: block.quote.rich_text,
             getMentionPage: options.getMentionPage,
-          }),
+          }) as unknown as RichTextItemResponse[],
         };
       }
       if (block.type === "to_do") {
@@ -145,7 +146,7 @@ export const getAllBlocksByBlockId = async ({
           rich_text: await getAllRichText({
             richText: block.to_do.rich_text,
             getMentionPage: options.getMentionPage,
-          }),
+          }) as unknown as RichTextItemResponse[],
         };
       }
       if (block.type === "toggle") {
@@ -154,7 +155,7 @@ export const getAllBlocksByBlockId = async ({
           rich_text: await getAllRichText({
             richText: block.toggle.rich_text,
             getMentionPage: options.getMentionPage,
-          }),
+          }) as unknown as RichTextItemResponse[],
         };
       }
       if (block.type === "bulleted_list_item") {
@@ -163,7 +164,7 @@ export const getAllBlocksByBlockId = async ({
           rich_text: await getAllRichText({
             richText: block.bulleted_list_item.rich_text,
             getMentionPage: options.getMentionPage,
-          }),
+          }) as unknown as RichTextItemResponse[],
         };
       }
       if (block.type === "numbered_list_item") {
@@ -172,7 +173,7 @@ export const getAllBlocksByBlockId = async ({
           rich_text: await getAllRichText({
             richText: block.numbered_list_item.rich_text,
             getMentionPage: options.getMentionPage,
-          }),
+          }) as unknown as RichTextItemResponse[],
         };
       }
       if (block.type === "callout") {
@@ -181,7 +182,7 @@ export const getAllBlocksByBlockId = async ({
           rich_text: await getAllRichText({
             richText: block.callout.rich_text,
             getMentionPage: options.getMentionPage,
-          }),
+          }) as unknown as RichTextItemResponse[],
         };
       }
       if (block.type === "template") {
@@ -190,7 +191,7 @@ export const getAllBlocksByBlockId = async ({
           rich_text: await getAllRichText({
             richText: block.template.rich_text,
             getMentionPage: options.getMentionPage,
-          }),
+          }) as unknown as RichTextItemResponse[],
         };
       }
       if (block.type === "code") {
@@ -199,7 +200,7 @@ export const getAllBlocksByBlockId = async ({
           rich_text: await getAllRichText({
             richText: block.code.rich_text,
             getMentionPage: options.getMentionPage,
-          }),
+          }) as unknown as RichTextItemResponse[],
         };
       }
     }

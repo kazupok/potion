@@ -13,12 +13,13 @@
     "publish-packages": "npm run build && changeset version && changeset publish"
   },
   "dependencies": {
-    "@notionhq/client": "^2.2.15",
+    "@notionhq/client": "^4.0.2",
     "node-html-parser": "^7.0.1",
     "typescript": "latest"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.11"
+    "@changesets/cli": "^2.27.11",
+    "@types/node": "^20"
   },
   "typesVersions": {
     "*": {

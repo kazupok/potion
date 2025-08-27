@@ -1,5 +1,6 @@
 import type { RichTextItemResponse } from "../notion";
 import type { GetMentionPage } from "../types";
+import type { RichTextItem } from "../types/blocks-types";
 
 export type GetAllRichTextProps = {
   richText: RichTextItemResponse[];
@@ -9,7 +10,7 @@ export type GetAllRichTextProps = {
 export const getAllRichText = async ({
   richText,
   getMentionPage,
-}: GetAllRichTextProps) => {
+}: GetAllRichTextProps): Promise<RichTextItemResponse[]> => {
   const allRichText = await Promise.all(
     richText?.map(async (text) => {
       if (text.type === "mention") {
@@ -18,7 +19,7 @@ export const getAllRichText = async ({
           return {
             ...text,
             Page: page,
-          };
+          } as RichTextItemResponse;
         }
       }
       return text;
