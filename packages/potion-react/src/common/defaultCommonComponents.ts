@@ -1,5 +1,5 @@
 import { MentionPage } from "../components";
-import { BlockComponentMap } from "../types";
+import type { BlockComponentMap } from "../types";
 
 export const defaultCommonComponents: BlockComponentMap["commonComponents"] = {
   mention: MentionPage,

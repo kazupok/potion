@@ -1,5 +1,5 @@
 import { getClassNameBlockId } from "potion-core";
-import { FC } from "react";
+import type { FC } from "react";
 import type { ToggleBlockProps } from "../../../types/blocks-types";
 import { RenderBlock } from "../common/RenderBlock";
 

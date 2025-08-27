@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { MentionProps } from "../../../types";
+import type { FC } from "react";
+import type { MentionProps } from "../../../types";
 
 export const MentionPage: FC<MentionProps> = ({ pageId, page }) => {
   if (!page) {

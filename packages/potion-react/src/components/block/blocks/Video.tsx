@@ -4,7 +4,7 @@ import {
   isYouTubeURL,
   parseYouTubeVideoId,
 } from "potion-core";
-import { FC } from "react";
+import type { FC } from "react";
 import type { VideoBlockProps } from "../../../types/blocks-types";
 
 const renderVideoContent = (videoPath: string) => {

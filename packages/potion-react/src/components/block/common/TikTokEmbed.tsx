@@ -1,5 +1,5 @@
 "use client";
-import { FC, useEffect, useState } from "react";
+import { type FC, useEffect, useState } from "react";
 
 export type TikTokEmbedProps = {
   embedUrl: string;

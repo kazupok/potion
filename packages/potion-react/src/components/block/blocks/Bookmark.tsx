@@ -1,5 +1,5 @@
 import { getClassNameBlockId } from "potion-core";
-import { FC } from "react";
+import type { FC } from "react";
 import type { BookmarkBlockProps } from "../../../types/blocks-types";
 import { BookmarkCard } from "../common/BookmarkCard";
 import { LinkTo } from "../common/LinkTo";

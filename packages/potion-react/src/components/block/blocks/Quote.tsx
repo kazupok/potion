@@ -1,6 +1,6 @@
 import { getClassNameBlockId } from "potion-core";
 import { snakeToKebab } from "potion-core";
-import { FC } from "react";
+import type { FC } from "react";
 import type { QuoteBlockProps } from "../../../types/blocks-types";
 import { RenderBlock } from "../common/RenderBlock";
 export const Quote: FC<QuoteBlockProps> = ({

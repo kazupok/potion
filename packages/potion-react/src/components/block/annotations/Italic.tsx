@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { ItalicProps } from "../../../types";
+import type { ItalicProps } from "../../../types";
 
 export const Italic: FC<ItalicProps> = ({ richText, children }) => {
   if (richText.annotations.italic) {

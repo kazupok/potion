@@ -1,6 +1,6 @@
 import { getClassNameBlockId, getImagePath } from "potion-core";
-import { FC } from "react";
-import { ImageBlockProps } from "../../../types/blocks-types";
+import type { FC } from "react";
+import type { ImageBlockProps } from "../../../types/blocks-types";
 
 export const Image: FC<ImageBlockProps> = ({ blockObject }) => {
   const imagePath = getImagePath(blockObject);

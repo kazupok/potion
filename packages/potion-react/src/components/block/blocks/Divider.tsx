@@ -1,6 +1,6 @@
 import { getClassNameBlockId } from "potion-core";
-import { FC } from "react";
-import { DividerBlockProps } from "../../../types/blocks-types";
+import type { FC } from "react";
+import type { DividerBlockProps } from "../../../types/blocks-types";
 
 export const Divider: FC<DividerBlockProps> = ({ blockObject }) => {
   return (

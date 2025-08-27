@@ -1,26 +1,16 @@
 {
-    "compilerOptions": {
-        "target": "ES2022",
-        "module": "NodeNext",
-        "lib": [
-            "ES2022",
-            "DOM",
-            "DOM.Iterable"
-        ],
-        "declaration": true,
-        "outDir": "./dist",
-        "rootDir": "./src",
-        "strict": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true,
-        "jsx": "react-jsx",
-    },
-    "include": [
-        "src/**/*.ts",
-        "src/**/*.tsx",
-        "src/**/*.js",
-        "src/**/*.jsx",
-        "src/**/*.css"
-    ]
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "declaration": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx", "src/**/*.css"]
 }

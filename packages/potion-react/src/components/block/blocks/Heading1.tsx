@@ -3,8 +3,8 @@ import {
   getHeadingId,
   isToggleableHeading,
 } from "potion-core";
-import { FC } from "react";
-import { Heading1BlockProps } from "../../../types/blocks-types";
+import type { FC } from "react";
+import type { Heading1BlockProps } from "../../../types/blocks-types";
 import { RenderBlock } from "../common/RenderBlock";
 export const Heading1: FC<Heading1BlockProps> = ({
   blockObject,

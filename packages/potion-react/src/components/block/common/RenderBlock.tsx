@@ -1,5 +1,5 @@
 import type { BlockObject } from "potion-core";
-import { FC } from "react";
+import type { FC } from "react";
 import type { BlockComponentMap, BlockProps } from "../../../types";
 export type RenderBlockProps = {
   blockObjects: BlockObject[];

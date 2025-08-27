@@ -4,8 +4,8 @@ import {
   isTikTokURL,
   isTweetURL,
 } from "potion-core";
-import { FC } from "react";
-import { EmbedBlockProps } from "../../../types/blocks-types";
+import type { FC } from "react";
+import type { EmbedBlockProps } from "../../../types/blocks-types";
 import { BookmarkCard } from "../common/BookmarkCard";
 import { InstagramEmbed } from "../common/InstagramEmbed";
 import { LinkTo } from "../common/LinkTo";

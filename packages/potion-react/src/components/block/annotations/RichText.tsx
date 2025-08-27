@@ -1,6 +1,6 @@
 import katex from "katex";
-import { FC } from "react";
-import { RichTextProps } from "../../../types";
+import type { FC } from "react";
+import type { RichTextProps } from "../../../types";
 
 export const RichText: FC<RichTextProps> = ({
   richText,

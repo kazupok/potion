@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { StrikethroughProps } from "../../../types";
+import type { StrikethroughProps } from "../../../types";
 
 export const Strikethrough: FC<StrikethroughProps> = ({
   richText,

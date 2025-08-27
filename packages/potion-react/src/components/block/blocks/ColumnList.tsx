@@ -1,6 +1,6 @@
 import { getClassNameBlockId } from "potion-core";
-import { FC } from "react";
-import { ColumnListBlockProps } from "../../../types/blocks-types";
+import type { FC } from "react";
+import type { ColumnListBlockProps } from "../../../types/blocks-types";
 import { RenderBlock } from "../common/RenderBlock";
 export const ColumnList: FC<ColumnListBlockProps> = ({
   blockObject,

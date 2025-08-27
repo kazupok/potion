@@ -38,7 +38,7 @@ import type {
   VideoBlockObject,
 } from "potion-core";
 import type React from "react";
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 
 export type BlockProps<T extends BlockObject> = {
   blockObject: T;

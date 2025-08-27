@@ -1,6 +1,6 @@
 import { getClassNameBlockId, snakeToKebab } from "potion-core";
-import { FC } from "react";
-import { CalloutBlockProps } from "../../../types/blocks-types";
+import type { FC } from "react";
+import type { CalloutBlockProps } from "../../../types/blocks-types";
 import { RenderBlock } from "../common/RenderBlock";
 export const Callout: FC<CalloutBlockProps> = ({
   blockObject,

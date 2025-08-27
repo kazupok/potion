@@ -1,7 +1,7 @@
 "use client";
 
 import Prism from "prismjs";
-import { FC } from "react";
+import type { FC } from "react";
 import "prismjs/components/prism-css";
 import "prismjs/components/prism-diff";
 import "prismjs/components/prism-docker";

@@ -1,5 +1,5 @@
 import { getClassNameBlockId } from "potion-core";
-import { FC } from "react";
+import type { FC } from "react";
 import type { LinkToPageBlockProps } from "../../../types/blocks-types";
 
 export const LinkToPage: FC<LinkToPageBlockProps> = ({

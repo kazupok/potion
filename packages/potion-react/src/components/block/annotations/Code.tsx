@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { CodeProps } from "../../../types";
+import type { CodeProps } from "../../../types";
 
 export const Code: FC<CodeProps> = ({ richText, children }) => {
   if (richText.annotations.code) {

@@ -1,6 +1,6 @@
 import { getClassNameBlockId } from "potion-core";
-import { FC } from "react";
-import { CodeBlockProps } from "../../../types/blocks-types";
+import type { FC } from "react";
+import type { CodeBlockProps } from "../../../types/blocks-types";
 import { CodeClient } from "../common/CodePreview";
 
 export const Code: FC<CodeBlockProps> = ({ blockObject }) => {

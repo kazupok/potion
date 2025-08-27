@@ -8,7 +8,7 @@ import {
   Strikethrough,
   Underline,
 } from "../components";
-import { BlockComponentMap } from "../types";
+import type { BlockComponentMap } from "../types";
 
 export const defaultRenderAnnotations: BlockComponentMap["annotations"] = {
   anchor: Anchor,

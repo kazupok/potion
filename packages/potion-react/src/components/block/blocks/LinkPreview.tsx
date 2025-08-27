@@ -1,5 +1,5 @@
 import { getClassNameBlockId } from "potion-core";
-import { FC } from "react";
+import type { FC } from "react";
 import type { LinkPreviewBlockProps } from "../../../types/blocks-types";
 import { LinkTo } from "../common/LinkTo";
 export const LinkPreview: FC<LinkPreviewBlockProps> = ({ blockObject }) => {

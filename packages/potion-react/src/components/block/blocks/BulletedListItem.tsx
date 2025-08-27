@@ -1,6 +1,6 @@
 import { getClassNameBlockId, snakeToKebab } from "potion-core";
-import { FC, ReactNode } from "react";
-import { BulletedListItemBlockProps } from "../../../types/blocks-types";
+import type { FC, ReactNode } from "react";
+import type { BulletedListItemBlockProps } from "../../../types/blocks-types";
 import { RenderBlock } from "../common/RenderBlock";
 
 const listStyles = [

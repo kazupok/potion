@@ -1,6 +1,6 @@
 import { getClassNameBlockId } from "potion-core";
 import { snakeToKebab } from "potion-core";
-import { FC, ReactNode } from "react";
+import type { FC, ReactNode } from "react";
 import type { NumberedListItemBlockProps } from "../../../types/blocks-types";
 import { RenderBlock } from "../common/RenderBlock";
 

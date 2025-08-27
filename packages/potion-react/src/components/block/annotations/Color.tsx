@@ -1,6 +1,6 @@
 import { snakeToKebab } from "potion-core";
 import type { FC } from "react";
-import { ColorProps } from "../../../types";
+import type { ColorProps } from "../../../types";
 
 export const Color: FC<ColorProps> = ({ richText, children }) => {
   if (richText.annotations.color && richText.annotations.color !== "default") {
