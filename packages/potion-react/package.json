@@ -3,11 +3,7 @@
   "version": "0.1.4",
   "main": "./dist",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**",
-    "dist/package.json",
-    "src/styles/**"
-  ],
+  "files": ["dist/**", "dist/package.json", "src/styles/**"],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -35,6 +31,7 @@
   "devDependencies": {
     "@changesets/cli": "^2.27.11",
     "@types/prismjs": "^1.26.5",
-    "@types/react": "18.3.1"
+    "@types/react": "^19",
+    "@types/react-dom": "^19"
   }
 }

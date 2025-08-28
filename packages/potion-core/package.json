@@ -10,10 +10,7 @@
       "default": "./dist/index.js"
     }
   },
-  "files": [
-    "dist/**",
-    "dist/package.json"
-  ],
+  "files": ["dist/**", "dist/package.json"],
   "scripts": {
     "build": "tsc",
     "dev": "npm run build -- --watch",
@@ -24,25 +21,17 @@
     "typescript": "latest"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.11"
+    "@changesets/cli": "^2.27.11",
+    "@types/react": "^19",
+    "@types/react-dom": "^19"
   },
   "typesVersions": {
     "*": {
-      "helpers": [
-        "./dist/helpers/index.d.ts"
-      ],
-      "common": [
-        "./dist/common/index.d.ts"
-      ],
-      "utils": [
-        "./dist/utils/index.d.ts"
-      ],
-      "types": [
-        "./dist/types/index.d.ts"
-      ],
-      "notion": [
-        "./dist/notion/index.d.ts"
-      ]
+      "helpers": ["./dist/helpers/index.d.ts"],
+      "common": ["./dist/common/index.d.ts"],
+      "utils": ["./dist/utils/index.d.ts"],
+      "types": ["./dist/types/index.d.ts"],
+      "notion": ["./dist/notion/index.d.ts"]
     }
   }
 }

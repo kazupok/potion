@@ -11,7 +11,9 @@ export const RichText: FC<RichTextProps> = ({
   const Anchor = ({ children }: { children: React.ReactNode }) => {
     if (annotations.anchor) {
       return (
-        <annotations.anchor richText={richText as any}>{children}</annotations.anchor>
+        <annotations.anchor richText={richText as any}>
+          {children}
+        </annotations.anchor>
       );
     }
     return <>{children}</>;
@@ -20,7 +22,9 @@ export const RichText: FC<RichTextProps> = ({
   const Bold = ({ children }: { children: React.ReactNode }) => {
     if (annotations.bold) {
       return (
-        <annotations.bold richText={richText as any}>{children}</annotations.bold>
+        <annotations.bold richText={richText as any}>
+          {children}
+        </annotations.bold>
       );
     }
     return <>{children}</>;
@@ -29,7 +33,9 @@ export const RichText: FC<RichTextProps> = ({
   const Code = ({ children }: { children: React.ReactNode }) => {
     if (annotations.code) {
       return (
-        <annotations.code richText={richText as any}>{children}</annotations.code>
+        <annotations.code richText={richText as any}>
+          {children}
+        </annotations.code>
       );
     }
     return <>{children}</>;
@@ -38,7 +44,9 @@ export const RichText: FC<RichTextProps> = ({
   const Color = ({ children }: { children: React.ReactNode }) => {
     if (annotations.color) {
       return (
-        <annotations.color richText={richText as any}>{children}</annotations.color>
+        <annotations.color richText={richText as any}>
+          {children}
+        </annotations.color>
       );
     }
     return <>{children}</>;
@@ -47,7 +55,9 @@ export const RichText: FC<RichTextProps> = ({
   const Italic = ({ children }: { children: React.ReactNode }) => {
     if (annotations.italic) {
       return (
-        <annotations.italic richText={richText as any}>{children}</annotations.italic>
+        <annotations.italic richText={richText as any}>
+          {children}
+        </annotations.italic>
       );
     }
     return <>{children}</>;

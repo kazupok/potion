@@ -53,13 +53,16 @@ export interface RichTextItemCommon {
   };
 }
 
-export type MentionRichTextItem = MentionRichTextItemResponse & RichTextItemCommon & {
-  Page?: MentionPage;
-};
+export type MentionRichTextItem = MentionRichTextItemResponse &
+  RichTextItemCommon & {
+    Page?: MentionPage;
+  };
 
-export type ExtendedTextRichTextItemResponse = TextRichTextItemResponse & RichTextItemCommon;
+export type ExtendedTextRichTextItemResponse = TextRichTextItemResponse &
+  RichTextItemCommon;
 
-export type ExtendedEquationRichTextItemResponse = EquationRichTextItemResponse & RichTextItemCommon;
+export type ExtendedEquationRichTextItemResponse =
+  EquationRichTextItemResponse & RichTextItemCommon;
 
 export type RichTextItem =
   | ExtendedTextRichTextItemResponse

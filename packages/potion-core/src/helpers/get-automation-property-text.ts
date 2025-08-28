@@ -21,7 +21,7 @@ export const getAutomationPropertyText = (
     return property.rich_text[0]?.plain_text || "";
   } catch (error) {
     // Optional logging - allow environments to define their own logging
-    if (typeof console !== 'undefined' && console.error) {
+    if (typeof console !== "undefined" && console.error) {
       console.error(
         `プロパティ「${propertyName}」の取得中にエラーが発生しました:`,
         error,

@@ -3,12 +3,14 @@ import type { Metadata } from "../types/index.js";
 // Web-compatible HTML parser using DOMParser (available in browsers and Cloudflare Workers)
 const parseHTML = (html: string): Document => {
   // Use DOMParser in Web environments (browsers, Cloudflare Workers)
-  if (typeof DOMParser !== 'undefined') {
-    return new DOMParser().parseFromString(html, 'text/html');
+  if (typeof DOMParser !== "undefined") {
+    return new DOMParser().parseFromString(html, "text/html");
   }
-  
+
   // Fallback for Node.js environments - create minimal DOM-like interface
-  throw new Error('HTML parsing not supported in this environment. Please provide a custom parser.');
+  throw new Error(
+    "HTML parsing not supported in this environment. Please provide a custom parser.",
+  );
 };
 
 export const getMetadata = async (url: URL): Promise<Metadata | null> => {
@@ -17,9 +19,7 @@ export const getMetadata = async (url: URL): Promise<Metadata | null> => {
     const doc = parseHTML(html);
 
     const title =
-      doc
-        .querySelector('meta[property="og:title"]')
-        ?.getAttribute("content") ||
+      doc.querySelector('meta[property="og:title"]')?.getAttribute("content") ||
       doc
         .querySelector('meta[name="twitter:title"]')
         ?.getAttribute("content") ||
@@ -55,17 +55,18 @@ export const getMetadata = async (url: URL): Promise<Metadata | null> => {
     const meta = {
       title: title || undefined,
       description: description || undefined,
-      image: doc
-        .querySelector('meta[property="og:image"]')
-        ?.getAttribute("content") || undefined,
-      url: doc
-        .querySelector('meta[property="og:url"]')
-        ?.getAttribute("content") || undefined,
+      image:
+        doc
+          .querySelector('meta[property="og:image"]')
+          ?.getAttribute("content") || undefined,
+      url:
+        doc.querySelector('meta[property="og:url"]')?.getAttribute("content") ||
+        undefined,
     };
     return meta;
   } catch (err) {
     // Optional logging - allow environments to define their own logging
-    if (typeof console !== 'undefined' && console.error) {
+    if (typeof console !== "undefined" && console.error) {
       console.error("Metadata fetch error:", err);
     }
     return null;
